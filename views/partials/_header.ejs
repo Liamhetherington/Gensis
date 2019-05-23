@@ -1,8 +1,17 @@
 <header>
       <div class="topnav">
-          <a class="active" href="#home">Home</a>
-          <a href="#login/logout">Login/Logout</a>
-          <a href="#myResources">My Resources</a>
+          <a class="active" href="/">Home</a>
+          <form method="POST" action="/">
+          <p>Username: </p>
+          <input type='username' name="username">
+          <p>Password: </p>
+          <input type='password' name='password'>
+          <br>
+          <br><button type="submit" class="btn btn-primary">Login</button>
+          </form>
+
+          <a href="/genesis">My Resources</a>
           <input type="text" placeholder="Search..">
       </div>
     </header>
+
