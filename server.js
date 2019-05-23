@@ -43,6 +43,11 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+//Individual Resource Page
+app.get('/info', (req, res) => {
+  res.render('info')
+})
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
