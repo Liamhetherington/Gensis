@@ -53,6 +53,10 @@ app.get('/info', (req, res) => {
   res.render('info')
 })
 
+app.get('/newResource', (req, res) => {
+  res.render('newResource')
+})
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
