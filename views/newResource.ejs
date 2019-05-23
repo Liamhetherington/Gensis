@@ -14,20 +14,21 @@
   <body>
   	<!-- Require header_partial here -->
     <h1>Create a New Resource</h1>
-    <form method="POST" action="/myResource">
+    <form method="POST" action="/new">
     	<div>
     		<label for="title">Titles: </label>
     		<input type="text" name="title"/>
     	</div>
     	<div>
     		<label for="source_url">URL: </label>
-    		<input type="URL" name="source_url" required="http" placeholder="http://" />
+    		<input type="URL" name="source_url" placeholder="http://" />
     	</div>
     	<div> 
     		<label for="description">Description: </label>
     	</div>	
     		<div>
     		<textarea name="description" placeholder="How do you feel?"></textarea>
+            <button input="submit">submit</button>
     	</div>
 
     </form>
