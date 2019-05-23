@@ -53,7 +53,7 @@ app.get("/new", (req, res) => {
 });
 
 app.post("/new", (req, res) => {
-	res.redirect("/");
+	res.redirect("/genesis");
 });
 
 app.get("/genesis", (req, res) => {
