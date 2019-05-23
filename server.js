@@ -42,6 +42,7 @@ app.use(express.static("public"));
 app.use("/api/users", usersRoutes(knex));
 
 // Home page
+
 app.get("/", (req, res) => {
 	res.render("index");
 });
@@ -53,6 +54,15 @@ app.get("/new", (req, res) => {
 
 app.post("/new", (req, res) => {
 	res.redirect("/");
+});
+
+app.get("/genesis", (req, res) => {
+	res.render("myResources");
+});
+
+//Individual Resource Page
+app.get("/info", (req, res) => {
+	res.render("info");
 });
 
 app.listen(PORT, () => {
