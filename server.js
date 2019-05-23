@@ -60,14 +60,16 @@ app.get("/genesis", (req, res) => {
 	res.render("myResources");
 });
 
+app.post("/genesis", (req, res) => {
+	res.redirect("/new");
+});
+
+
 //Individual Resource Page
 app.get("/info", (req, res) => {
 	res.render("info");
 });
 
-app.get('/newResource', (req, res) => {
-  res.render('newResource')
-})
 
 app.listen(PORT, () => {
 	console.log("Example app listening on port " + PORT);
