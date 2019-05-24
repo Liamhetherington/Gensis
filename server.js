@@ -88,6 +88,11 @@ app.get("/resource", (req, res) => {
 		});
 	// res.render("info");
 });
+app.get("/comments", (req, res) => {
+	knex("comments").then(comments => {
+		return res.json(comments);
+	});
+});
 
 app.post("/likes", (req, res) => {
 	console.log(req.body);
@@ -117,6 +122,13 @@ app.post("/rating", (req, res) => {
 	console.log("I am rating");
 	// knex("likes").insert({
 	// resource_id
+});
+
+app.get("/resource", (req, res) => {
+	knex("resource").then(resource => {
+		return res.json(resource);
+	});
+	// res.render("info");
 });
 
 app.listen(PORT, () => {

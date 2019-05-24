@@ -6,21 +6,30 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/info_page_styling.css" type="text/css" />
 
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/comments_container.js"></script>
+
   </head>
 
   <body>
 
-    <h1 id="resource-title"></h1>
 
-      <object class='resourcemedia' type='media'> </object>
-      <section class='description-box'>
+
+    <h1 id="resource-title"></h1>
+    <div>
+      <object id="resource-media" type="media">
+      </object>
+      <section class="description-box">
+
         <h2>Description</h2>
-          <textarea class="resourceinfo" placeholder="This is where the description of the resource will go. It is up to the user to determine how much information they would like to include. Text box will max out at 350 characters."></textarea>
+          <article id="description">
+          </article>
       </section>
+
 
   <form method="POST" action="/rating">
     <div class="rating">
@@ -41,6 +50,18 @@
   </form>
 
       <form method="POST" action="/comments">
+    </div>
+    <div id="date-div">
+      <span id="date"></span>
+    </div>
+    <div class="comment">
+      <textarea></textarea>
+      <button class="commentButton" type="submit">Add a Comment</button>
+
+      <article class="existing-comments" type="text"></article>
+
+    </div>
+
       <div class="comment">
         <textarea></textarea>
         <button class="commentButton" type="submit">Add a Comment
@@ -50,6 +71,7 @@
           </textarea>
         </article>
       </div>
+
     </form>
   </body>
 </html>

@@ -1,0 +1,32 @@
+div section {
+  float: right;
+}
+
+div object {
+  float: left;
+}
+
+h1 #resource-title {
+  margin-bottom: 40px;
+}
+
+div #date-div {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+span #date {
+  margin-left: 50px;
+  color:black;
+}
+
+div .comment {
+  margin-top: 40px;
+}
+
+article .existing-comments {
+  color: black;
+  float:right;
+  width:150px;
+  margin-right: 150px;
+}
