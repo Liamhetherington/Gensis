@@ -1,10 +1,20 @@
-$(() => {
+function createResourceElement(resource) {
+  let $title = $('#resource-title');
+    $title.text(resource.title);
+  let $object= $('<object>');
+  let $footer = $('<footer>');
+  let $content = $('<div>').attr('src', resource.url);
+  console.log(resource.url);
+  return $content
+}
+
+
+$(document).ready(function() {
   $.ajax({
-    method: "GET",
-    url: "/api/users"
-  }).done((users) => {
-    for(user of users) {
-      $("<div>").text(user.name).appendTo($("body"));
+    type:'GET',
+    url: '/resource',
+    success: resource => {
+      createResourceElement(resource);
     }
-  });;
-});
+  });
+})
