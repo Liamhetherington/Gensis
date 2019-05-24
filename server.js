@@ -8,6 +8,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const app = express();
+const cookieSession = require('cookie-session');
+const bcrypt = require('bcrypt');
 
 const knexConfig = require("./knexfile");
 const knex = require("knex")(knexConfig[ENV]);
@@ -21,6 +23,11 @@ const usersRoutes = require("./routes/users");
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan("dev"));
+
+app.use(cookieSession({
+    name: 'session',
+    keys: ["1"],
+}))
 
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
@@ -44,7 +51,58 @@ app.use("/api/users", usersRoutes(knex));
 // Home page
 
 app.get("/", (req, res) => {
-	res.render("index");
+   if (req.session.id === undefined) {
+        return res.render("index", {username: ""});
+    }
+    knex.select("username").from("users").where('id',req.session.id)
+    .then(function (result){
+    let templateVars = {username: result[0].username};
+    res.render("index", templateVars);
+    })
+});
+
+
+
+app.get("/login", (req, res) => {
+    res.render("login");
+});
+
+
+app.post("/login", (req, res) => {
+
+	let result = checkUsername(req.body.username);
+ 	result.then((value)=>{
+   if(value > 0){
+    req.session.id = value;
+   	res.redirect("/")
+
+    console.log("user found in the database with id ", value);
+   } else{
+   	res.send("Username not found");
+   }
+	});
+});
+
+//function to check if the user is existed in database
+function checkUsername(username){
+ return knex.select("id").from("users").where('username',username)
+ .then(function (users){
+   if(users.length>0){
+     return Promise.resolve(users[0].id);
+   } else {
+     return Promise.resolve(0)
+   }
+   console.log("its after knex query");
+ });
+}
+
+
+
+
+
+app.post("/logout", (req, res) => {
+	  req.session = null;
+    res.redirect("/");
 });
 
 // new page
@@ -67,6 +125,7 @@ app.post("/new", (req, res) => {
 });
 
 app.get("/genesis", (req, res) => {
+	const username = req.body.username
 	res.render("myResources");
 });
 
