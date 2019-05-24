@@ -53,12 +53,34 @@ app.get("/new", (req, res) => {
 });
 
 //new page connecting to myresource page
+// app.post("/new", (req, res) => {
+// 	res.redirect("/genesis");
+// });
+
+// new page
+// app.get("/new", (req, res) => {
+// 	res.render("newResource");
+// });
+
 app.post("/new", (req, res) => {
-	res.redirect("/genesis");
+	knex("resource")
+		.insert({
+			title: req.body.title,
+			url: req.body.source_url,
+			//date_created: "5/23/2019",
+			description: req.body.description
+		})
+		.then(function(result) {
+			res.redirect("/genesis");
+		});
 });
 
 app.get("/genesis", (req, res) => {
 	res.render("myResources");
+});
+
+app.post("/genesis", (req, res) => {
+	res.redirect("/new");
 });
 
 //Individual Resource Page
