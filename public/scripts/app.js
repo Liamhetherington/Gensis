@@ -1,6 +1,7 @@
 function createResourceElement(resource) {
   let $title = $('#resource-title');
     $title.text(resource.title);
+
   // let $object= $('#resource-media');
   //   $object.find(resource.url);
   let $description = $('#description');

@@ -55,9 +55,6 @@ app.get("/new", (req, res) => {
 	res.render("newResource");
 });
 
-app.post("/new", (req, res) => {
-	res.redirect("/genesis");
-});
 
 // new page
 app.get("/new", (req, res) => {
@@ -72,10 +69,8 @@ app.post("/new", (req, res) => {
 		description: req.body.description
 	})
   .then( function (result) {
-      res.json({ success: true, message: 'ok' });     // respond back to request
+  	res.redirect("/genesis");
    })
-
-	res.redirect("/genesis");
 });
 
 
@@ -101,11 +96,13 @@ app.get("/resource" , (req, res) => {
   // res.render("info");
 });
 
+
 app.get("/comments", (req, res) => {
   knex('comments').then(comments => {
     return res.json(comments);
   });
 });
+
 
 app.listen(PORT, () => {
 	console.log("Example app listening on port " + PORT);
