@@ -52,11 +52,10 @@ app.use("/api/users", usersRoutes(knex));
 
 app.get("/", (req, res) => {
    if (req.session.id === undefined) {
-        return res.redirect("/");
+        return res.render("index", {username: ""});
     }
     knex.select("username").from("users").where('id',req.session.id)
     .then(function (result){
-    console.log(result)
     let templateVars = {username: result[0].username};
     res.render("index", templateVars);
     })
@@ -101,7 +100,7 @@ function checkUsername(username){
 
 
 app.post("/logout", (req, res) => {
-	const username = req.body.username
+	  req.session = null;
     res.redirect("/");
 });
 
