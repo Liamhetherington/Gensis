@@ -118,13 +118,15 @@ app.get("/new", (req, res) => {
 });
 
 app.post("/new", (req, res) => {
-	knex("resource")
+
+  knex("resource")
 		.returning("id")
 		.insert({
 			title: req.body.title,
 			url: req.body.source_url,
 			// date_created : "5/23/2019",
-			description: req.body.description
+			description: req.body.description,
+      users_id: req.session.id
 		})
 		.then(function(result) {
 			res.redirect("/genesis");
@@ -149,8 +151,9 @@ app.post("/genesis", (req, res) => {
     knex.select("username").from("users").where('id',req.session.id)
     .then(function (result){
     let templateVars = {username: result[0].username};
-    res.redirect("/new", templateVars);
+    res.render("myResources", templateVars);
     })
+  res.redirect("/new")
 });
 
 //Individual Resource Page
