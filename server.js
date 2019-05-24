@@ -90,9 +90,21 @@ app.get("/resource", (req, res) => {
 });
 
 app.post("/likes", (req, res) => {
-	console.log("I am liking");
-	// knex("likes").insert({
-	// resource_id
+	console.log(req.body);
+	knex("likes")
+		.insert({
+			resource_id: 1,
+			users_id: 1
+		})
+		.then(function(like) {
+			console.log(like);
+			res.json();
+		});
+
+	// 1. write to likes table
+	// 2. get resource likes
+	// knex("resource")
+	// 3. update resource likes
 });
 
 app.post("/comments", (req, res) => {
