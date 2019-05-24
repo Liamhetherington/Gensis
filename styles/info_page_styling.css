@@ -30,3 +30,7 @@ article .existing-comments {
   width:150px;
   margin-right: 150px;
 }
+
+section .description-box {
+  width: 250px;
+}
