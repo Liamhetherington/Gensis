@@ -8,6 +8,7 @@
 </head>
 
 <body>
+  <% include partials/_header%>
 
   <h4>Category</h4>
  <select>
@@ -17,14 +18,16 @@
   <option value="Coding">Coding</option>
 </select>
 
-  <form action="/category" method="POST">
-                <textarea class="empty" name="text" placeholder="New Category"></textarea>
-                <input type="submit" value="Add">
-  </form>
-
-    <button type="button">Create Resource</button>
+    <textarea class="empty" name="text" placeholder="New Category"></textarea>
+    <input type="submit" value="Add">
 
 
+<form action="/genesis" method="POST">
+   <input type="submit" value="Create Resource">
+</form>
+<object class='resourcemedia' type='media'>
+
+      </object>
     <main class="container">
 
       <br>
