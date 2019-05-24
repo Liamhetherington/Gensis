@@ -4,18 +4,11 @@
 
     <%if(username){%>
     <p>Logged In As: <%= username %></p>
-    <form method="POST" action="/">
+    <form method="POST" action="/logout">
           <button type="submit" class="btn btn-primary">Logout</button>
     </form>
   <% }else{ %>
-    <form method="POST" action="/">
-          <p>Username: </p>
-          <input type='username' name="username">
-          <p>Password: </p>
-          <input type='password' name='password'>
-          <br>
-          <br><button type="submit" class="btn btn-primary">Login</button>
-          </form>
+   <a href='/login'>Login</a>
   <% } %>
 
       <a href="/genesis">My Resources</a>

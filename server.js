@@ -44,7 +44,80 @@ app.use("/api/users", usersRoutes(knex));
 // Home page
 
 app.get("/", (req, res) => {
+	const username = req.body.username
 	res.render("index");
+});
+
+app.get("/login", (req, res) => {
+    res.render("login");
+});
+
+app.post("/login", (req, res) => {
+
+	let result = checkUsername(req.body.username);
+ 	result.then((value)=>{
+   if(value > 0){
+   	res.redirect("/")
+     console.log("user found in the database with id ", value);
+   } else{
+   	res.send("Username not found");
+     //console.log("user didnt match");
+   }
+
+    //login process
+  //   const username = req.body.username
+
+  //   knex.select('*').from('users').where(knex.raw('username = ?', [username]))
+  //   .asCallback(function(err, rows){
+	 //    if (err){
+	 //    	res.send('error')
+	 //    	return
+	 //    }
+	 //    if(rows.length > 0){
+	 //    	res.redirect('/');
+	 //    }else{
+	 //    	res.send('username is not existed')
+	 //    }
+  //     });
+		// }
+	});
+});
+
+
+///////
+
+function checkUsername(username){
+ var userId;
+ return knex.select("id").from("users").where('username',username)
+ .then(function (users){
+   if(users.length>0){
+     return Promise.resolve(users[0].id);
+   } else {
+     return Promise.resolve(0)
+   }
+   console.log("its after knex query");
+ });
+}
+//Create login
+// app.post('/login', (req, res) => {
+//  let result = checkUsername(req.body.username);
+//  result.then((value)=>{
+//    if(value > 0){
+//      console.log("user found in the database with id ", value);
+//    } else{
+//      console.log("user didnt match");
+//    }
+//  });
+
+
+
+
+////////////
+
+
+app.post("/logout", (req, res) => {
+	const username = req.body.username
+    res.redirect("/");
 });
 
 // new page
@@ -60,14 +133,13 @@ app.post("/new", (req, res) => {
 		description: req.body.description
 	})
   .then( function (result) {
-      res.json({ success: true, message: 'ok' });     // respond back to request
+        res.redirect("/genesis");
    })
-
-	res.redirect("/genesis");
 });
 
 
 app.get("/genesis", (req, res) => {
+	const username = req.body.username
 	res.render("myResources");
 });
 
