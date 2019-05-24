@@ -53,8 +53,19 @@ app.get("/new", (req, res) => {
 });
 
 app.post("/new", (req, res) => {
+	knex('resource').returning('id').insert({
+		title: req.body.title,
+		url: req.body.source_url,
+		date_created : "5/23/2019",
+		description: req.body.description
+	})
+  .then( function (result) {
+      res.json({ success: true, message: 'ok' });     // respond back to request
+   })
+
 	res.redirect("/genesis");
 });
+
 
 app.get("/genesis", (req, res) => {
 	res.render("myResources");
