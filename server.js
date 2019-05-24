@@ -54,15 +54,12 @@ app.get("/", (req, res) => {
    if (req.session.id === undefined) {
         return res.redirect("/");
     }
-    let templateVars = {
-        username: knex.select("username").from("users").where('id',req.session.id)
-                  .then(function (result){
-                  console.log(result)
-                  // return result[0].anonymous.username
-                  }),
-    };
-
-	res.render("index", templateVars);
+    knex.select("username").from("users").where('id',req.session.id)
+    .then(function (result){
+    console.log(result)
+    let templateVars = {username: result[0].username};
+    res.render("index", templateVars);
+    })
 });
 
 
