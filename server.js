@@ -52,16 +52,7 @@ app.get("/new", (req, res) => {
 	res.render("newResource");
 });
 
-//new page connecting to myresource page
-// app.post("/new", (req, res) => {
-// 	res.redirect("/genesis");
-// });
-
-// new page
-// app.get("/new", (req, res) => {
-// 	res.render("newResource");
-// });
-
+//new page connecting to database
 app.post("/new", (req, res) => {
 	knex("resource")
 		.insert({
@@ -86,6 +77,13 @@ app.post("/genesis", (req, res) => {
 //Individual Resource Page
 app.get("/info", (req, res) => {
 	res.render("info");
+});
+
+app.post("/info", (req, res) => {
+	console.log("I am liking");
+	// knex("likes").insert({
+	// 	resource_id
+	// });
 });
 
 app.listen(PORT, () => {
