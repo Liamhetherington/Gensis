@@ -52,13 +52,13 @@ app.get("/new", (req, res) => {
 	res.render("newResource");
 });
 
-//new page connecting to database
 app.post("/new", (req, res) => {
 	knex("resource")
+		.returning("id")
 		.insert({
 			title: req.body.title,
 			url: req.body.source_url,
-			//date_created: "5/23/2019",
+			// date_created : "5/23/2019",
 			description: req.body.description
 		})
 		.then(function(result) {
@@ -79,11 +79,32 @@ app.get("/info", (req, res) => {
 	res.render("info");
 });
 
-app.post("/info", (req, res) => {
+app.get("/resource", (req, res) => {
+	knex("resource")
+		.first()
+		.then(resource => {
+			console.log("resource: ", resource);
+			return res.json(resource);
+		});
+	// res.render("info");
+});
+
+app.post("/likes", (req, res) => {
 	console.log("I am liking");
 	// knex("likes").insert({
-	// 	resource_id
-	// });
+	// resource_id
+});
+
+app.post("/comments", (req, res) => {
+	console.log("I am commenting");
+	// knex("likes").insert({
+	// resource_id
+});
+
+app.post("/rating", (req, res) => {
+	console.log("I am rating");
+	// knex("likes").insert({
+	// resource_id
 });
 
 app.listen(PORT, () => {
