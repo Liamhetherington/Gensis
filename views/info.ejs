@@ -6,11 +6,13 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-     <link rel="stylesheet" href="/styles/info_page_styling.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/info_page_styling.css" type="text/css" />
 
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/comments_container.js"></script>
+
   </head>
 
   <body>
@@ -25,15 +27,15 @@
           </article>
       </section>
     </div>
-      <div class="comment">
-        <textarea></textarea>
-        <button class="commentButton" type="submit">Add a Comment</button>
+    <div id="date-div">
+      <span id="date"></span>
+    </div>
+    <div class="comment">
+      <textarea></textarea>
+      <button class="commentButton" type="submit">Add a Comment</button>
 
-        <article type="text">
-          <textarea class="existing-comments">This will be were existing comments are displayed
-          </textarea>
-        </article>
+      <article class="existing-comments" type="text"></article>
 
-      </div>
+    </div>
   </body>
 </html>

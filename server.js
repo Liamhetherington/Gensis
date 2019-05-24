@@ -95,11 +95,16 @@ app.get("/info", (req, res) => {
 });
 
 app.get("/resource" , (req, res) => {
-  knex('resource').first().then(resource => {
-    console.log("resource: ", resource);
+  knex('resource').then(resource => {
     return res.json(resource);
   });
   // res.render("info");
+});
+
+app.get("/comments", (req, res) => {
+  knex('comments').then(comments => {
+    return res.json(comments);
+  });
 });
 
 app.listen(PORT, () => {
