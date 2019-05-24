@@ -14,8 +14,11 @@ const knex = require("knex")(knexConfig[ENV]);
 const morgan = require("morgan");
 const knexLogger = require("knex-logger");
 
+
+
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
+
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -52,9 +55,6 @@ app.get("/new", (req, res) => {
 	res.render("newResource");
 });
 
-app.post("/new", (req, res) => {
-	res.redirect("/genesis");
-});
 
 // new page
 app.get("/new", (req, res) => {
@@ -69,10 +69,8 @@ app.post("/new", (req, res) => {
 		description: req.body.description
 	})
   .then( function (result) {
-      res.json({ success: true, message: 'ok' });     // respond back to request
+  	res.redirect("/genesis");
    })
-
-	res.redirect("/genesis");
 });
 
 
@@ -87,7 +85,16 @@ app.post("/genesis", (req, res) => {
 
 //Individual Resource Page
 app.get("/info", (req, res) => {
+
 	res.render("info");
+});
+
+app.get("/resource" , (req, res) => {
+  knex('resource').first().then(resource => {
+    console.log("resource: ", resource);
+    return res.json(resource);
+  });
+  // res.render("info");
 });
 
 app.listen(PORT, () => {
