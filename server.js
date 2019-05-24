@@ -52,6 +52,7 @@ app.get("/new", (req, res) => {
 	res.render("newResource");
 });
 
+//new page connecting to myresource page
 app.post("/new", (req, res) => {
 	res.redirect("/genesis");
 });
