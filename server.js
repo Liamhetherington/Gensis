@@ -107,7 +107,14 @@ app.post("/logout", (req, res) => {
 
 // new page
 app.get("/new", (req, res) => {
-	res.render("newResource");
+   if (req.session.id === undefined) {
+        return res.render("index", {username: ""});
+    }
+    knex.select("username").from("users").where('id',req.session.id)
+    .then(function (result){
+    let templateVars = {username: result[0].username};
+    res.render("newResource", templateVars);
+    })
 });
 
 app.post("/new", (req, res) => {
@@ -125,12 +132,25 @@ app.post("/new", (req, res) => {
 });
 
 app.get("/genesis", (req, res) => {
-	const username = req.body.username
-	res.render("myResources");
+    if (req.session.id === undefined) {
+        return res.render("index", {username: ""});
+    }
+    knex.select("username").from("users").where('id',req.session.id)
+    .then(function (result){
+    let templateVars = {username: result[0].username};
+    res.render("myResources", templateVars);
+    })
 });
 
 app.post("/genesis", (req, res) => {
-	res.redirect("/new");
+   if (req.session.id === undefined) {
+        return res.render("index", {username: ""});
+    }
+    knex.select("username").from("users").where('id',req.session.id)
+    .then(function (result){
+    let templateVars = {username: result[0].username};
+    res.redirect("/new", templateVars);
+    })
 });
 
 //Individual Resource Page
