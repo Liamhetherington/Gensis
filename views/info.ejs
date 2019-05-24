@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+     <link rel="stylesheet" href="/styles/info_page_styling.css" type="text/css" />
 
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -15,13 +16,14 @@
   <body>
 
     <h1 id="resource-title"></h1>
-      <ul>-attach hyperlink anchor to title that will redirect to the original URL source</ul>
-      <object class='resourcemedia' type='media'>
+
+      <object id="resource-media" type="media">
 
       </object>
-      <section class='description-box'>
+      <section class="description-box">
         <h2>Description</h2>
-          <textarea class="resourceinfo" placeholder="This is where the description of the resource will go. It is up to the user to determine how much information they would like to include. Text box will max out at 350 characters."></textarea>
+          <article id="description">
+          </article>
       </section>
 
       <div class="comment">
