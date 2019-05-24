@@ -1,24 +1,11 @@
-article #description {
-  color: black;
-  font-size: 15px;
-  width:400px;
-  margin-right: 50px;
-}
-
-h1 {
-  font-size: 2em;
-  padding: 5px;
-  margin-top:40px;
-  margin-bottom:40px;
-}
-
-body section {
+div section {
   float: right;
-  width: 300px;
-  height: 280px;
 }
 
-section .description-box {
-  width: 250px;
-  margin-right:150px;
+div object {
+  float: left;
+}
+
+h1 #resource-title {
+  margin-bottom: 40px;
 }
