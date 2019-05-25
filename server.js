@@ -116,7 +116,7 @@ app.post("/new", (req, res) => {
 		.insert({
 			title: req.body.title,
 			url: req.body.source_url,
-			// date_created : "5/23/2019",
+			date_created : new Date(),
 			description: req.body.description
 		})
 		.then(function(result) {
