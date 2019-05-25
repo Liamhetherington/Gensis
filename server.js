@@ -194,12 +194,13 @@ app.post("/info", (req, res) => {
 	knex("comments")
     .insert({
       comment: req.body.comment,
-      users_id: req.session.id,
+      users_id: req.body.users_id,
       resource_id: req.body.resource_id
     })
     .then(function(result) {
       return res.json();
     })
+  res.redirect("/info");
 });
 
 app.post("/rating", (req, res) => {
