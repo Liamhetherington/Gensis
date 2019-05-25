@@ -101,16 +101,6 @@ function checkUsername(username) {
 
 // new page
 app.get("/new", (req, res) => {
-<<<<<<< HEAD
-   if (req.session.id === undefined) {
-        return res.render("index", {username: ""});
-    }
-    knex.select("username").from("users").where('id',req.session.id)
-    .then(function (result){
-    let templateVars = {username: result[0].username};
-    res.render("newResource", templateVars);
-    })
-=======
 	if (req.session.id === undefined) {
 		return res.render("index", { username: "" });
 	}
@@ -121,7 +111,6 @@ app.get("/new", (req, res) => {
 			let templateVars = { username: result[0].username };
 			res.render("newResource", templateVars);
 		});
->>>>>>> master
 });
 
 app.post("/new", (req, res) => {
