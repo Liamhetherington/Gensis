@@ -54,15 +54,21 @@ app.use("/api/users", usersRoutes(knex));
 
 app.get("/", (req, res) => {
 	if (req.session.id === undefined) {
-		return res.render("index", { username: "" });
+		console.log("SESSION WAS EMPTY");
+		res.render("index", { username: "" });
+	} else {
+		console.log("session was not empty. SUCCESS");
+		console.log("Session id ", req.session.id);
+		console.log("type of session ", typeof req.session.id);
+		knex.select("username")
+			.from("users")
+			.where("id", req.session.id)
+			.then(function(result) {
+				console.log(result[0].username);
+				let templateVars = { username: result[0].username };
+				res.render("index", templateVars);
+			});
 	}
-	knex.select("username")
-		.from("users")
-		.where("id", req.session.id)
-		.then(function(result) {
-			let templateVars = { username: result[0].username };
-			res.render("index", templateVars);
-		});
 });
 
 app.get("/login", (req, res) => {
@@ -73,11 +79,12 @@ app.post("/login", (req, res) => {
 	let result = checkUsername(req.body.username);
 	result.then(value => {
 		if (value > 0) {
+			console.log("we are good to go");
 			req.session.id = value;
 			res.redirect("/");
-
-			console.log("user found in the database with id ", value);
+			//console.log("user found in the database with id ", value);
 		} else {
+			console.log("something happened ");
 			res.send("Username not found");
 		}
 	});
@@ -113,31 +120,27 @@ app.get("/new", (req, res) => {
 		});
 });
 
-
-
 app.post("/new", (req, res) => {
-  knex.select("id")
-   .from("category")
-   .where("topic", req.body.category)
-   .then(function(result){
-      //got the category ID
-      knex("resource")
-        .insert({
-          title: req.body.title,
-          url: req.body.source_url,
-          // date_created : "5/23/2019",
-          thumbnail: req.body.thumbnail_url,
-          description: req.body.description,
-          users_id: parseInt(req.session.id),
-          category_id: parseInt(result[0].id)
-        })
-        .then(function(result) {
-          res.redirect("/genesis");
-        });
-   })
+	knex.select("id")
+		.from("category")
+		.where("topic", req.body.category)
+		.then(function(result) {
+			//got the category ID
+			knex("resource")
+				.insert({
+					title: req.body.title,
+					url: req.body.source_url,
+					// date_created : "5/23/2019",
+					thumbnail: req.body.thumbnail_url,
+					description: req.body.description,
+					users_id: parseInt(req.session.id),
+					category_id: parseInt(result[0].id)
+				})
+				.then(function(result) {
+					res.redirect("/genesis");
+				});
+		});
 });
-
-
 
 app.get("/genesis", (req, res) => {
 	if (req.session.id === undefined) {
@@ -168,7 +171,11 @@ app.post("/genesis", (req, res) => {
 
 //Individual Resource Page
 app.get("/info", (req, res) => {
-	res.render("info");
+	if (req.session.id === undefined) {
+		res.render("info", { username: "" });
+	}
+	let templateVars = { username: req.session.id };
+	res.render("info", templateVars);
 });
 
 app.get("/resource", (req, res) => {
@@ -176,7 +183,7 @@ app.get("/resource", (req, res) => {
 	knex("resource").then(resource => {
 		return res.json(resource);
 	});
-	res.render("info");
+	// res.render("info");
 });
 app.get("/comments", (req, res) => {
 	knex("comments")
