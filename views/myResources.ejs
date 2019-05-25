@@ -17,16 +17,17 @@
 <% include ./partials/_header %>
 
   <h4>Category</h4>
- <select>
+ <select name="category">
   <option value="all">all</option>
   <option value="design">design</option>
   <option value="food">food</option>
   <option value="coding">coding</option>
 </select>
 
-    <textarea class="empty" name="text" placeholder="New Category"></textarea>
+<form method="POST" action="/category">
+    <textarea class="empty" name="addNewTopic" placeholder="New Topic"></textarea>
     <input type="submit" value="Add">
-
+</form>
 
 <form action="/genesis" method="POST">
    <input type="submit" value="Create Resource">
