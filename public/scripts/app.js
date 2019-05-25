@@ -1,44 +1,42 @@
 function createResourceElement(resource) {
-  let $title = $('#resource-title');
-    $title.text(resource.title);
+	let $title = $("#resource-title");
+	$title.text(resource.title);
+	let $description = $("#description");
+	$description.text(resource.description);
+	let $date = $("#date");
+	$date.text(moment(resource.date_created).fromNow());
 
-  // let $object= $('#resource-media');
-  //   $object.find(resource.url);
-  let $description = $('#description');
-    $description.text(resource.description);
-  let $date = $('#date');
-    $date.text(resource.date_created);
-  console.log("description: ", resource.desciption);
+	console.log("resource: ", resource);
 }
 
 function renderResource(resource) {
-  $('<body>').empty();
-  let $currentResource = $('<body>');
-  resource.forEach(function (resourceInfo) {
-    let $resourceInfo = createResourceElement(resourceInfo)
-    $currentResource.append($resourceInfo)
-  })
+	$("<body>").empty();
+	let $currentResource = $("<body>");
+	resource.forEach(function(resourceInfo) {
+		let $resourceInfo = createResourceElement(resourceInfo);
+		$currentResource.append($resourceInfo);
+	});
 }
 
 function loadResource() {
-  $.ajax({
-    type:"GET",
-    url:'/resource',
-    data: JSON,
-    success: function (data) {
-      renderResource(data)
-    }
-  })
+	$.ajax({
+		type: "GET",
+		url: "/resource",
+		data: JSON,
+		success: function(data) {
+			renderResource(data);
+		}
+	});
 }
 loadResource();
 
 $(document).ready(function() {
-  $.ajax({
-    type:'GET',
-    url: '/resource',
-    success: resource => {
-      createResourceElement(resource);
-    }
-  });
-})
+	$.ajax({
+		type: "GET",
+		url: "/resource",
+		success: resource => {
+			createResourceElement(resource);
+		}
+	});
+});
 
