@@ -113,21 +113,31 @@ app.get("/new", (req, res) => {
 		});
 });
 
+
+
 app.post("/new", (req, res) => {
-	knex("resource")
-		.returning("id")
-		.insert({
-			title: req.body.title,
-			url: req.body.source_url,
-			date_created: new Date(),
-			description: req.body.description,
-			thumbnail: req.body.thumbnail_url,
-			users_id: req.session.id
-		})
-		.then(function(result) {
-			res.redirect("/genesis");
-		});
+  console.log(req.body)
+  knex.select("id")
+   .from("category")
+   .where("topic", req.body.category)
+   .then(function(result){
+      knex("resource")
+        .returning("id")
+        .insert({
+          title: req.body.title,
+          url: req.body.source_url,
+          // date_created : "5/23/2019",
+          description: req.body.description,
+          users_id: req.session.id,
+          category_id: result[0].id
+        })
+        .then(function(result) {
+          res.redirect("/genesis");
+        });
+   })
 });
+
+
 
 app.get("/genesis", (req, res) => {
 	if (req.session.id === undefined) {

@@ -3,9 +3,12 @@
   <head>
     <title>Main Wall</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+   <!--  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" /> -->
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
+
+    <link rel="stylesheet" href="/styles/masonry.css" type="text/css" />
 
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -18,14 +21,17 @@
 
 
   </head>
-  <% include ./partials/_header %>
+
 
   <body>
+    <% include ./partials/_header %>
 
     <h1>Genesis Board</h1>
     <h3>concept formation plateform</h3>
+    <div class="masonry">
       <div id="thumbnails">
       </div>
+    </div>
       <footer></footer>
     </article>
 

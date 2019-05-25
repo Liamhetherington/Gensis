@@ -10,10 +10,14 @@
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
   </head>
 
   <body>
+
       <% include ./partials/_header %>
+
     <h1>Create a New Resource</h1>
     <form method="POST" action="/new">
     	<div>
@@ -25,6 +29,14 @@
     		<input type="URL" name="source_url" placeholder="http://" required/>
     	</div>
         <div>
+            <h4>Category</h4>
+            <select name="category">
+            <option value="All">All</option>
+            <option value="design">design</option>
+            <option value="food">food</option>
+            <option value="coding">coding</option>
+            </select>
+        </div>
             <label for="thumbnail_url">Image: </label>
             <input type="URL" name="thumbnail_url" placeholder="http://" required/>
         </div>

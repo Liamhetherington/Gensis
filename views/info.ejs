@@ -19,6 +19,9 @@
 
   <body>
 
+  <% include ./partials/_header %>
+
+
     <h1 id="resource-title"></h1>
     <div>
       <img id="resource-media" type="media"/>
@@ -51,6 +54,7 @@
       <span id="date"></span>
     </div>
 
+
   <div class="comment">
     <form method="POST" action="/info">
       <input type="text" name="comment" />
@@ -60,6 +64,7 @@
       <article class="existing-comments" type="text"></article>
 
     </div>
+
     </form>
 
   </body>
