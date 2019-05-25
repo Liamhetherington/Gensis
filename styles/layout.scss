@@ -27,6 +27,11 @@ body {
     border-radius: 10px;
   }
 
+  .thumbnailImage {
+    width: 100px;
+    height: 100px;
+  }
+
   textarea {
     height: 180px;
     width: 300px;
@@ -51,6 +56,14 @@ body {
     content: "\2605";
     position: absolute;
   }
+  @each $star in (1, 2, 3, 4, 5) {
+    [data-rating="#{$star}"] > span:nth-child(#{6 - $star}):before,
+    [data-rating="#{$star}"] > span:nth-child(#{6 - $star}) ~ span:before {
+      content: "\2605";
+      position: absolute;
+    }
+  }
+
   article {
     float: right;
     margin-right: 150px;

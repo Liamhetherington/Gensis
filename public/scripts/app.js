@@ -40,4 +40,10 @@ $(document).ready(function() {
 			createResourceElement(resource);
 		}
 	});
+	// star rating function
+	$(".rating > span").on("click", e => {
+		$(e.target)
+			.parent()
+			.attr("data-rating", "3");
+	});
 });
