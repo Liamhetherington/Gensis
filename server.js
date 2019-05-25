@@ -121,6 +121,7 @@ app.get("/new", (req, res) => {
 });
 
 app.post("/new", (req, res) => {
+	console.log(req.body.category);
 	knex.select("id")
 		.from("category")
 		.where("topic", req.body.category)
@@ -198,21 +199,26 @@ app.get("/comments", (req, res) => {
 
 app.post("/likes", (req, res) => {
 	console.log(req.body);
-	knex("likes")
-		.insert({
-			resource_id: 1,
-			users_id: req.session.id
-		})
-		.then(function(like) {
-			console.log(like);
-			res.json();
+	knex.select("id")
+		.from("resource")
+		.then(function(result) {
+			knex("likes")
+				.insert({
+					resource_id: resource.id,
+					users_id: req.session.id
+				})
+				.then(function() {
+					// res.render("/info");
+					res.json(likes);
+				});
 		});
-
-	// 1. write to likes table
-	// 2. get resource likes
-	// knex("resource")
-	// 3. update resource likes
 });
+
+// 1. write to likes table
+// 2. get resource likes
+// knex("resource")
+// 3. update resource likes
+// });
 
 app.post("/info", (req, res) => {
 	knex("comments")
