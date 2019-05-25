@@ -16,22 +16,33 @@
 
 <% include ./partials/_header %>
 
+
+<form method="GET" action="/genesis">
   <h4>Category</h4>
  <select name="category">
   <option value="all">all</option>
   <option value="design">design</option>
   <option value="food">food</option>
   <option value="coding">coding</option>
-</select>
+ </select>
+ </form>
+
+
+
 
 <form method="POST" action="/category">
-    <textarea class="empty" name="addNewTopic" placeholder="New Topic"></textarea>
+    <textarea name="addNewTopic" placeholder="New Topic"></textarea>
     <input type="submit" value="Add">
 </form>
+
+
 
 <form action="/genesis" method="POST">
    <input type="submit" value="Create Resource">
 </form>
+
+
+
 <object class='resourcemedia' type='media'>
 
       </object>

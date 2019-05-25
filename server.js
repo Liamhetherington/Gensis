@@ -156,16 +156,16 @@ app.get("/genesis", (req, res) => {
 });
 
 app.post("/genesis", (req, res) => {
-	if (req.session.id === undefined) {
-		return res.render("index", { username: "" });
-	}
-	knex.select("username")
-		.from("users")
-		.where("id", req.session.id)
-		.then(function(result) {
-			let templateVars = { username: result[0].username };
-			res.render("myResources", templateVars);
-		});
+	// if (req.session.id === undefined) {
+	// 	return res.render("index", { username: "" });
+	// }
+	// knex.select("username")
+	// 	.from("users")
+	// 	.where("id", req.session.id)
+	// 	.then(function(result) {
+	// 		let templateVars = { username: result[0].username };
+	// 		res.render("myResources", templateVars);
+	// 	});
 	res.redirect("/new");
 });
 
@@ -185,6 +185,37 @@ app.get("/resource", (req, res) => {
 	});
 	// res.render("info");
 });
+
+
+app.post("/category", (req, res) =>{
+	console.log(req.body)
+   if (req.session.id === undefined) {
+		return res.render("index", { username: "" });
+	}
+	knex("category")
+				.insert({
+					topic: req.body.addNewTopic
+				})
+				.then(function(result) {
+					return res.json();
+				});
+	knex.select("username")
+		.from("users")
+		.where("id", req.session.id)
+		.then(function(result) {
+			let templateVars = {
+			 username: result[0].username
+			};
+			res.render("myResources", templateVars);
+		});
+});
+
+
+
+
+
+
+
 app.get("/comments", (req, res) => {
 	knex("comments")
 		.insert({
