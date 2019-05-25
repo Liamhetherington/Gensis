@@ -31,3 +31,6 @@ jQuery.fn.filterByText = function(textbox) {
 $(function() {
   $('select').filterByText($('input'));
 });
+
+
+*every time choose a topic, empty container(twetter)
