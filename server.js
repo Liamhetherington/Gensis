@@ -172,15 +172,21 @@ app.get("/info", (req, res) => {
 });
 
 app.get("/resource", (req, res) => {
+	users_id: req.session.id;
 	knex("resource").then(resource => {
 		return res.json(resource);
 	});
-	// res.render("info");
+	res.render("info");
 });
 app.get("/comments", (req, res) => {
-	knex("comments").then(comments => {
-		return res.json(comments);
-	});
+	knex("comments")
+		.insert({
+			resource_id: 1,
+			users_id: req.session.id
+		})
+		.then(comments => {
+			return res.json(comments);
+		});
 });
 
 app.post("/likes", (req, res) => {
@@ -188,7 +194,7 @@ app.post("/likes", (req, res) => {
 	knex("likes")
 		.insert({
 			resource_id: 1,
-			users_id: 1
+			users_id: req.session.id
 		})
 		.then(function(like) {
 			console.log(like);
