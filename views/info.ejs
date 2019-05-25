@@ -6,23 +6,25 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/info_page_styling.css" type="text/css" />
+<!--     <link rel="stylesheet" href="/styles/info_page_styling.css" type="text/css" />
+ -->
 
-
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/comments_container.js"></script>
 
+
   </head>
 
   <body>
+
   <% include ./partials/_header %>
 
 
     <h1 id="resource-title"></h1>
     <div>
-      <object id="resource-media" type="media">
-      </object>
+      <img id="resource-media" type="media"/>
       <section class="description-box">
 
         <h2>Description</h2>
@@ -32,8 +34,8 @@
 
 
   <form method="POST" action="/rating">
-    <div class="rating">
-        <span>☆</span>
+    <div class="rating" data-rating="0">
+        <span value="1">☆</span>
         <span>☆</span>
         <span>☆</span>
         <span>☆</span>
@@ -48,23 +50,22 @@
     </button>
     </span>
   </form>
-
-      <form method="POST" action="/comments">
-    </div>
     <div id="date-div">
       <span id="date"></span>
     </div>
 
-      <div class="comment">
-        <textarea></textarea>
-        <button class="commentButton" type="submit">Add a Comment
-        </button>
-        <article type="text">
-          <textarea class="existing-comments">This will be were existing comments are displayed
-          </textarea>
-        </article>
-      </div>
+
+  <div class="comment">
+    <form method="POST" action="/info">
+      <input type="text" name="comment" />
+      <button class="commentButton" type="submit">Add a Comment</button>
+    </form>
+
+      <article class="existing-comments" type="text"></article>
+
+    </div>
 
     </form>
+
   </body>
 </html>

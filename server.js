@@ -121,8 +121,8 @@ app.post("/new", (req, res) => {
    .from("category")
    .where("topic", req.body.category)
    .then(function(result){
+      //got the category ID
       knex("resource")
-        .returning("id")
         .insert({
           title: req.body.title,
           url: req.body.source_url,
@@ -130,7 +130,7 @@ app.post("/new", (req, res) => {
           thumbnail: req.body.thumbnail_url,
           description: req.body.description,
           users_id: req.session.id,
-          category_id: result[0].id
+          category_id: parseInt(result[0].id)
         })
         .then(function(result) {
           res.redirect("/genesis");
@@ -202,10 +202,16 @@ app.post("/likes", (req, res) => {
 	// 3. update resource likes
 });
 
-app.post("/comments", (req, res) => {
-	console.log("I am commenting");
-	// knex("likes").insert({
-	// resource_id
+app.post("/info", (req, res) => {
+	knex("comments")
+		.insert({
+			comment: req.body.comment,
+			users_id: req.session.id,
+			resource_id: req.body.resource_id
+		})
+		.then(function(result) {
+			return res.json();
+		});
 });
 
 app.post("/rating", (req, res) => {
