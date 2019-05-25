@@ -9,24 +9,48 @@
     <link rel="stylesheet" href="/styles/info_page_styling.css" type="text/css" />
 
 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/comments_container.js"></script>
 
+
   </head>
 
   <body>
+      <% include ./partials/_header %>
 
     <h1 id="resource-title"></h1>
     <div>
       <object id="resource-media" type="media">
       </object>
       <section class="description-box">
+
         <h2>Description</h2>
           <article id="description">
           </article>
       </section>
 
+
+  <form method="POST" action="/rating">
+    <div class="rating">
+        <span>☆</span>
+        <span>☆</span>
+        <span>☆</span>
+        <span>☆</span>
+        <span>☆</span>
+    </div>
+    </form>
+
+  <form method="POST" action="/likes">
+    <span>
+    <button class="Like">
+                <text>Like</text>
+    </button>
+    </span>
+  </form>
+
+  <form method="POST" action="/comments">
     </div>
     <div id="date-div">
       <span id="date"></span>
@@ -39,5 +63,6 @@
 
     </div>
 
+    </form>
   </body>
 </html>

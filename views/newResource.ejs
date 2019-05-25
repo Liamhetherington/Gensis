@@ -2,17 +2,18 @@
 <html lang="en">
   <head>
     <title>Create a New Resource</title>
-<!-- 
+
+
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script> -->
+    <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
   <body>
-  	<!-- Require header_partial here -->
+      <% include ./partials/_header %>
     <h1>Create a New Resource</h1>
     <form method="POST" action="/new">
     	<div>
@@ -21,11 +22,11 @@
     	</div>
     	<div>
     		<label for="source_url">URL: </label>
-    		<input type="URL" name="source_url" placeholder="http://" />
+    		<input type="URL" name="source_url" placeholder="http://" required/>
     	</div>
-    	<div> 
+    	<div>
     		<label for="description">Description: </label>
-    	</div>	
+    	</div>
     		<div>
     		<textarea name="description" placeholder="How do you feel?"></textarea>
             <button input="submit">submit</button>
