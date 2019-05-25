@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
 		table.date("date_created");
 		table.string("url");
 		table.string("description");
+		table.string("thumbnail");
 		table.integer("users_id").unsigned();
 		table.foreign("users_id").references("users.id");
 	});
