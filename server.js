@@ -127,6 +127,7 @@ app.post("/new", (req, res) => {
           title: req.body.title,
           url: req.body.source_url,
           // date_created : "5/23/2019",
+          thumbnail: req.body.thumbnail_url,
           description: req.body.description,
           users_id: req.session.id,
           category_id: result[0].id
