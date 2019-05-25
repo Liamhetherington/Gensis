@@ -1,6 +1,8 @@
 function createResourceElement(resource) {
 	let $title = $("#resource-title");
 	$title.text(resource.title);
+	let $thumbnail = $("#resource-media");
+	$thumbnail.attr("src", resource.thumbnail);
 	let $description = $("#description");
 	$description.text(resource.description);
 	let $date = $("#date");
@@ -39,4 +41,3 @@ $(document).ready(function() {
 		}
 	});
 });
-

@@ -17,7 +17,7 @@ div #date-div {
 }
 span #date {
   margin-left: 50px;
-  color:black;
+  color: black;
 }
 
 div .comment {
@@ -26,8 +26,8 @@ div .comment {
 
 article .existing-comments {
   color: black;
-  float:right;
-  width:150px;
+  float: right;
+  width: 150px;
   margin-right: 150px;
 }
 

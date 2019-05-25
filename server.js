@@ -119,8 +119,9 @@ app.post("/new", (req, res) => {
 		.insert({
 			title: req.body.title,
 			url: req.body.source_url,
-			date_created : new Date(),
+			date_created: new Date(),
 			description: req.body.description,
+			thumbnail: req.body.thumbnail_url,
 			users_id: req.session.id
 		})
 		.then(function(result) {
@@ -192,14 +193,14 @@ app.post("/likes", (req, res) => {
 
 app.post("/info", (req, res) => {
 	knex("comments")
-    .insert({
-      comment: req.body.comment,
-      users_id: req.session.id,
-      resource_id: req.body.resource_id
-    })
-    .then(function(result) {
-      return res.json();
-    })
+		.insert({
+			comment: req.body.comment,
+			users_id: req.session.id,
+			resource_id: req.body.resource_id
+		})
+		.then(function(result) {
+			return res.json();
+		});
 });
 
 app.post("/rating", (req, res) => {
