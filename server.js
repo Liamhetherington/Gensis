@@ -119,7 +119,7 @@ app.post("/new", (req, res) => {
 		.insert({
 			title: req.body.title,
 			url: req.body.source_url,
-			date_created: new Date(timestamp),
+			date_created: new Date(),
 			description: req.body.description,
 			thumbnail: req.body.thumbnail_url,
 			users_id: req.session.id
