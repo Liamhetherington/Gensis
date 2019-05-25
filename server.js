@@ -120,7 +120,7 @@ app.post("/new", (req, res) => {
 			title: req.body.title,
 			url: req.body.source_url,
 			date_created : new Date(),
-			description: req.body.description
+			description: req.body.description,
 			users_id: req.session.id
 		})
 		.then(function(result) {
@@ -190,10 +190,16 @@ app.post("/likes", (req, res) => {
 	// 3. update resource likes
 });
 
-app.post("/comments", (req, res) => {
-	console.log("I am commenting");
-	// knex("likes").insert({
-	// resource_id
+app.post("/info", (req, res) => {
+	knex("comments")
+    .insert({
+      comment: req.body.comment,
+      users_id: req.session.id,
+      resource_id: req.body.resource_id
+    })
+    .then(function(result) {
+      return res.json();
+    })
 });
 
 app.post("/rating", (req, res) => {

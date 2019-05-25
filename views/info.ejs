@@ -18,7 +18,7 @@
   </head>
 
   <body>
-      <% include ./partials/_header %>
+
 
     <h1 id="resource-title"></h1>
     <div>
@@ -49,20 +49,18 @@
     </button>
     </span>
   </form>
-
-  <form method="POST" action="/comments">
-    </div>
     <div id="date-div">
       <span id="date"></span>
     </div>
-    <div class="comment">
-      <textarea></textarea>
+
+  <div class="comment">
+    <form method="POST" action="/info">
+      <input type="text" name="comment" />
       <button class="commentButton" type="submit">Add a Comment</button>
+    </form>
 
       <article class="existing-comments" type="text"></article>
 
     </div>
-
-    </form>
   </body>
 </html>
