@@ -116,7 +116,6 @@ app.get("/new", (req, res) => {
 
 
 app.post("/new", (req, res) => {
-  console.log(req.body)
   knex.select("id")
    .from("category")
    .where("topic", req.body.category)
@@ -129,7 +128,7 @@ app.post("/new", (req, res) => {
           // date_created : "5/23/2019",
           thumbnail: req.body.thumbnail_url,
           description: req.body.description,
-          users_id: req.session.id,
+          users_id: parseInt(req.session.id),
           category_id: parseInt(result[0].id)
         })
         .then(function(result) {
