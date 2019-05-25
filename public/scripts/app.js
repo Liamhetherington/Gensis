@@ -1,14 +1,14 @@
 function createResourceElement(resource) {
 	let $title = $("#resource-title");
 	$title.text(resource.title);
-
-	// let $object= $('#resource-media');
-	//   $object.find(resource.url);
+	let $thumbnail = $("#resource-media");
+	$thumbnail.attr("src", resource.thumbnail);
 	let $description = $("#description");
 	$description.text(resource.description);
 	let $date = $("#date");
-	$date.text(resource.date_created);
-	console.log("description: ", resource.desciption);
+	$date.text(moment(resource.date_created).fromNow());
+
+	console.log("resource: ", resource);
 }
 
 function renderResource(resource) {
@@ -40,5 +40,10 @@ $(document).ready(function() {
 			createResourceElement(resource);
 		}
 	});
+	// star rating function
+	$(".rating > span").on("click", e => {
+		$(e.target)
+			.parent()
+			.attr("data-rating", "3");
+	});
 });
-
