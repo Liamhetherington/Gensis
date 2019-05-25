@@ -171,7 +171,11 @@ app.post("/genesis", (req, res) => {
 
 //Individual Resource Page
 app.get("/info", (req, res) => {
-	res.render("info");
+	if (req.session.id === undefined) {
+		res.render("info", { username: "" });
+	}
+	let templateVars = { username: req.session.id };
+	res.render("info", templateVars);
 });
 
 app.get("/resource", (req, res) => {
@@ -179,7 +183,7 @@ app.get("/resource", (req, res) => {
 	knex("resource").then(resource => {
 		return res.json(resource);
 	});
-	//res.render("info");
+	// res.render("info");
 });
 app.get("/comments", (req, res) => {
 	knex("comments")
