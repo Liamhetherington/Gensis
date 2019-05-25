@@ -1,6 +1,8 @@
 function createResourceElement(resource) {
 	let $title = $("#resource-title");
 	$title.text(resource.title);
+	let $thumbnail = $("#resource-media");
+	$thumbnail.attr("src", resource.thumbnail);
 	let $description = $("#description");
 	$description.text(resource.description);
 	let $date = $("#date");
@@ -38,5 +40,10 @@ $(document).ready(function() {
 			createResourceElement(resource);
 		}
 	});
+	// star rating function
+	$(".rating > span").on("click", e => {
+		$(e.target)
+			.parent()
+			.attr("data-rating", "3");
+	});
 });
-
