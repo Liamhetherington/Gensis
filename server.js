@@ -111,14 +111,26 @@ app.get("/new", (req, res) => {
 	if (req.session.id === undefined) {
 		return res.render("index", { username: "" });
 	}
-	knex.select("username")
-		.from("users")
-		.where("id", req.session.id)
-		.then(function(result) {
-			let templateVars = { username: result[0].username };
-			res.render("newResource", templateVars);
+
+knex.select("topic")
+		.from("category")
+		.then(function(topics) {
+    knex.select("username")
+			.from("users")
+			.where("id", req.session.id)
+			.then(function(result) {
+				let templateVars = {
+          username: result[0].username,
+          newTopic: topics.map(function (item, index) {
+                   return item.topic
+        })
+           };
+				res.render("newResource", templateVars);
+			});
 		});
 });
+
+
 
 app.post("/new", (req, res) => {
 	knex.select("id")
@@ -208,6 +220,10 @@ app.post("/category", (req, res) =>{
 			});
 		});
 });
+
+
+
+
 
 
 
