@@ -152,43 +152,20 @@ app.get("/genesis", (req, res) => {
 	knex.select("topic")
 		.from("category")
 		.then(function(topics) {
-console.log("cdushchadsuichdishuc", topics)
     knex.select("username")
 			.from("users")
 			.where("id", req.session.id)
 			.then(function(result) {
 				let templateVars = {
           username: result[0].username,
-          newTopic: topics.forEach(function (item, index) {
+          newTopic: topics.map(function (item, index) {
                    return item.topic
         })
            };
 				res.render("myResources", templateVars);
 			});
-
-
-
-
-
-
-			// let templateVar1 = {
-			// 	newTopic: topics.forEach(function (item, index) {
-   //                 return item.topic
-   //      })
-			// };
 		});
-
-
-	// knex.select("username")
-	// 	.from("users")
-	// 	.where("id", req.session.id)
-	// 	.then(function(result) {
-	// 		let templateVars = { username: result[0].username };
-	// 		res.render("myResources", templateVars);
-	// 	});
 });
-
-
 
 
 
