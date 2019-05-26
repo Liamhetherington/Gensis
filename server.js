@@ -167,23 +167,14 @@ app.post("/genesis", (req, res) => {
 });
 
 //Individual Resource Page
-app.get("/info/", (req, res) => {
-	if (req.session.id === undefined) {
-		res.render("info", { username: "" });
-	}
-	let templateVars = { username: req.session.id };
-	res.render("info", templateVars);
-});
-
-// app.post("/resource/:id", (req, res) => {
-// 	knex.select("resource_id")
-// 		.from("resource")
-// 		.where("url", resource_url)
-// 		.then(function(result) {
-// 			let templateVars = { resource: resource };
-// 			res.redirect("/info/" + id, templateVars);
-// 		});
+// app.get("/info/", (req, res) => {
+// 	if (req.session.id === undefined) {
+// 		res.render("info", { username: "" });
+// 	}
+// 	let templateVars = { username: req.session.id };
+// 	res.render("info", templateVars);
 // });
+
 function getAllMyResources() {
 	return knex.select("*").from("resource");
 }
@@ -195,11 +186,33 @@ function getOneMyResource(id) {
 		.where("id", id);
 }
 
+function getCommentsForResource(resourceId) {
+	return knex
+		.select("*")
+		.from("comments")
+		.where("resource_id", resourceId);
+}
+
+function getLikesForResource(resourceId) {
+	return knex
+		.select("*")
+		.from("likes")
+		.where("resource_id", resourceId);
+}
+
+async function getResourceDetails(resourceId) {
+	const allResource = {
+		likes: await getLikesForResource(resourceId),
+		comments: await getCommentsForResource(resourceId),
+		resource: (await getOneMyResource(resourceId))[0]
+	};
+	return allResource;
+}
+
 app.get("/resource/:id", (req, res) => {
 	const id = req.params.id;
-	getOneMyResource(id).then(resource => {
-		let templateVars = { resource };
-		res.render("info", templateVars);
+	getResourceDetails(id).then(details => {
+		res.render("info", details);
 	});
 });
 
@@ -208,7 +221,6 @@ app.get("/resource", (req, res) => {
 	knex("resource").then(resource => {
 		return res.json(resource);
 	});
-	// res.render("info");
 });
 app.get("/comments", (req, res) => {
 	knex("comments")
@@ -237,12 +249,6 @@ app.post("/likes", (req, res) => {
 		});
 });
 
-// 1. write to likes table
-// 2. get resource likes
-// knex("resource")
-// 3. update resource likes
-// });
-
 app.post("/resource/id", (req, res) => {
 	knex("comments")
 		.insert({
@@ -264,19 +270,6 @@ app.post("/logout", (req, res) => {
 	req.session = null;
 	res.redirect("/");
 });
-
-// function generateRandomString(length) {
-// 	var result = "";
-// 	var characters =
-// 		"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-// 	var charactersLength = characters.length;
-// 	for (var i = 0; i < length; i++) {
-// 		result += characters.charAt(
-// 			Math.floor(Math.random() * charactersLength)
-// 		);
-// 	}
-// 	return result;
-// }
 
 app.listen(PORT, () => {
 	console.log("Example app listening on port " + PORT);
