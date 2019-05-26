@@ -20,7 +20,6 @@ function loadComments () {
     data: JSON,
     success: function (data) {
       renderComments(data)
-      console.log("Data: ", data);
     }
   })
 }
