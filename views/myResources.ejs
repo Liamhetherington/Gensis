@@ -17,15 +17,16 @@
 <% include ./partials/_header %>
 
 
+
 <form method="GET" action="/genesis">
   <h4>Category</h4>
  <select name="category">
 <% newTopic.forEach(function(item, index){ %>
      <option value="<%= item %>"><%= item %></option>
 <% }) %>
-
  </select>
  </form>
+
 
 
 

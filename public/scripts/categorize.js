@@ -16,7 +16,7 @@ $(document).ready(function() {
     resource.forEach(function(images) {
       let $imageRender = createMainDisplay(images);
       console.log($imageRender);
-      $thumbnails.append($imageRender);
+      $thumbnails.prepend($imageRender);
     });
   }
 
