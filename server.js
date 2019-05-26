@@ -142,23 +142,43 @@ app.post("/new", (req, res) => {
 		});
 });
 
+
+
 app.get("/genesis", (req, res) => {
 	if (req.session.id === undefined) {
 		return res.render("index", { username: "" });
 	}
-	knex.select("username")
-		.from("users")
-		.where("id", req.session.id)
-		.then(function(result) {
-			let templateVars = { username: result[0].username };
-			res.render("myResources", templateVars);
-		});
-});
 
-app.post("/genesis", (req, res) => {
-	// if (req.session.id === undefined) {
-	// 	return res.render("index", { username: "" });
-	// }
+	knex.select("topic")
+		.from("category")
+		.then(function(topics) {
+console.log("cdushchadsuichdishuc", topics)
+    knex.select("username")
+			.from("users")
+			.where("id", req.session.id)
+			.then(function(result) {
+				let templateVars = {
+          username: result[0].username,
+          newTopic: topics.forEach(function (item, index) {
+                   return item.topic
+        })
+           };
+				res.render("myResources", templateVars);
+			});
+
+
+
+
+
+
+			// let templateVar1 = {
+			// 	newTopic: topics.forEach(function (item, index) {
+   //                 return item.topic
+   //      })
+			// };
+		});
+
+
 	// knex.select("username")
 	// 	.from("users")
 	// 	.where("id", req.session.id)
@@ -166,25 +186,18 @@ app.post("/genesis", (req, res) => {
 	// 		let templateVars = { username: result[0].username };
 	// 		res.render("myResources", templateVars);
 	// 	});
+});
+
+
+
+
+
+
+
+app.post("/genesis", (req, res) => {
 	res.redirect("/new");
 });
 
-//Individual Resource Page
-app.get("/info", (req, res) => {
-	if (req.session.id === undefined) {
-		res.render("info", { username: "" });
-	}
-	let templateVars = { username: req.session.id };
-	res.render("info", templateVars);
-});
-
-app.get("/resource", (req, res) => {
-	users_id: req.session.id;
-	knex("resource").then(resource => {
-		return res.json(resource);
-	});
-	// res.render("info");
-});
 
 
 app.post("/category", (req, res) =>{
@@ -216,6 +229,38 @@ app.post("/category", (req, res) =>{
 
 
 
+
+//Individual Resource Page
+app.get("/info", (req, res) => {
+	if (req.session.id === undefined) {
+		res.render("info", { username: "" });
+	}
+	let templateVars = { username: req.session.id };
+	res.render("info", templateVars);
+});
+
+
+
+
+
+
+app.get("/resource", (req, res) => {
+	users_id: req.session.id;
+	knex("resource").then(resource => {
+		return res.json(resource);
+	});
+	// res.render("info");
+});
+
+
+
+
+
+
+
+
+
+
 app.get("/comments", (req, res) => {
 	knex("comments")
 		.insert({
@@ -226,6 +271,7 @@ app.get("/comments", (req, res) => {
 			return res.json(comments);
 		});
 });
+
 
 app.post("/likes", (req, res) => {
 	console.log(req.body);
