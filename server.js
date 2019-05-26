@@ -189,14 +189,23 @@ app.post("/category", (req, res) =>{
 				.then(function(result) {
 					return res.json();
 				});
-	knex.select("username")
-		.from("users")
-		.where("id", req.session.id)
-		.then(function(result) {
-			let templateVars = {
-			 username: result[0].username
-			};
-			res.render("myResources", templateVars);
+
+
+	knex.select("topic")
+			.from("category")
+			.then(function(topics) {
+	    knex.select("username")
+				.from("users")
+				.where("id", req.session.id)
+				.then(function(result) {
+					let templateVars = {
+	          username: result[0].username,
+	          newTopic: topics.map(function (item, index) {
+	                   return item.topic
+	        })
+	      };
+				res.render("myResources", templateVars);
+			});
 		});
 });
 
