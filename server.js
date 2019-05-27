@@ -31,6 +31,10 @@ app.use(
 	})
 );
 
+exports.index = function(req, res) {
+	// send moment to your ejs
+	res.render("info", { moment: moment });
+};
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
 
