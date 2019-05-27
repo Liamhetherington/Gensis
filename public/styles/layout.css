@@ -1,4 +1,4 @@
-.container {
+container {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -80,77 +80,63 @@ body h1 {
   width: 300px;
   height: 280px;
 }
-
 body div.comment {
   margin-top: 20px;
   margin-left: 50px;
 }
-
 body div.existing-comments {
   padding: 5px;
 }
-
 body button.commentButton {
   color: red;
   border-radius: 10px;
 }
-
 body .thumbnailImage {
   width: 100px;
   height: 100px;
 }
-
 body textarea {
   height: 180px;
   width: 300px;
   padding: 4px;
 }
-
 body .rating {
   float: right;
 }
-
 body .rating {
   unicode-bidi: bidi-override;
   direction: rtl;
 }
-
 body .rating > span {
   display: inline-block;
   position: relative;
   width: 1.1em;
 }
-
 body .rating > span:hover:before,
 body .rating > span:hover ~ span:before {
   content: "\2605";
   position: absolute;
 }
-
 body [data-rating="1"] > span:nth-child(5):before,
 body [data-rating="1"] > span:nth-child(5) ~ span:before {
   content: "\2605";
   position: absolute;
 }
-
 body [data-rating="2"] > span:nth-child(4):before,
 body [data-rating="2"] > span:nth-child(4) ~ span:before {
   content: "\2605";
   position: absolute;
 }
-
 body [data-rating="3"] > span:nth-child(3):before,
 body [data-rating="3"] > span:nth-child(3) ~ span:before {
   content: "\2605";
   position: absolute;
 }
-
 body [data-rating="4"] > span:nth-child(2):before,
 body [data-rating="4"] > span:nth-child(2) ~ span:before {
   content: "\2605";
   position: absolute;
 }
-
 body [data-rating="5"] > span:nth-child(1):before,
 body [data-rating="5"] > span:nth-child(1) ~ span:before {
   content: "\2605";
