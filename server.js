@@ -150,8 +150,6 @@ app.post("/new", (req, res) => {
 		});
 });
 
-
-
 app.get("/genesis", (req, res) => {
 	if (req.session.id === undefined) {
 		return res.render("index", { username: "" });
@@ -210,7 +208,6 @@ app.post("/category", (req, res) => {
 
 //Individual Resource Page
 
-
 function getAllMyResources() {
 	return knex.select("*").from("resource");
 }
@@ -252,22 +249,18 @@ app.get("/resource/:id", (req, res) => {
 	}
 	getResourceDetails(id).then(details => {
 		knex.select("username")
-					.from("users")
-					.where("id", req.session.id)
-					.then(function(result) {
-						let templateVars = {
-							username: result[0].username,
-							...details,
-						};
-						// console.log(templateVars)
-						res.render("info", templateVars);
-					});
-
+			.from("users")
+			.where("id", req.session.id)
+			.then(function(result) {
+				let templateVars = {
+					username: result[0].username,
+					...details
+				};
+				// console.log(templateVars)
+				res.render("info", templateVars);
+			});
 	});
-
 });
-
-
 
 app.get("/resource", (req, res) => {
 	users_id: req.session.id;

@@ -71,7 +71,8 @@ exports.seed = function(knex, Promise) {
 					date_created: "05/24/2019",
 					url: "https://ejs.co/",
 					description: "Embedded JavaScript templating. Get Started!",
-					thumbnail: "",
+					thumbnail:
+						"https://cdn-images-1.medium.com/max/1600/1*5xR5P6dzu4LpyMaR2QMphA.jpeg",
 					users_id: "2",
 					category_id: "4"
 				}),
@@ -96,7 +97,8 @@ exports.seed = function(knex, Promise) {
 						"https://www.shape.com/healthy-eating/meal-ideas/black-goth-foods-instagram",
 					description:
 						"Say goodbye to mermaids and unicorns—these black foods are about to take over your Instagram feed.",
-					thumbnail: "",
+					thumbnail:
+						"https://images.shape.mdpcdn.com/sites/shape.com/files/styles/slide/public/goth-charcoal-ice-cream-little-damage.jpg",
 					users_id: "3",
 					category_id: "3"
 				}),
@@ -134,7 +136,8 @@ exports.seed = function(knex, Promise) {
 					url:
 						"https://www.udemy.com/the-foundations-of-computer-design/",
 					description: "Basics to computer design",
-					thumbnail: "",
+					thumbnail:
+						"https://i.udemycdn.com/course/750x422/1164182_d150.jpg",
 					users_id: "2",
 					category_id: "2"
 				}),
@@ -183,7 +186,8 @@ exports.seed = function(knex, Promise) {
 					url: "https://codepen.io/",
 					description:
 						"CodePen is a social development environment for front-end designers and developers.",
-					thumbnail: "",
+					thumbnail:
+						"https://s3.amazonaws.com/media.eremedia.com/wp-content/uploads/2018/05/31112343/Codepen.png",
 					users_id: "2",
 					category_id: "4"
 				}),
@@ -193,7 +197,8 @@ exports.seed = function(knex, Promise) {
 					date_created: "05/24/2019",
 					url: "https://www.last.fm/tag/gothic+metal/artists",
 					description: "Top 100 metal artists from Scandinavia",
-					thumbnail: "",
+					thumbnail:
+						"https://lastfm-img2.akamaized.net/i/u/270x205/ee40dda2851130a4b4a1700ddb674a5f.jpg",
 					users_id: "1",
 					category_id: "5"
 				}),
@@ -205,7 +210,8 @@ exports.seed = function(knex, Promise) {
 						"https://www.lacarmina.com/blog/2010/01/my-all-girl-spooky-japanese-goth-band-scary-visual-kei-makeup-black-lipstick-gothic-girls-outside-trash-vaudeville-nyc/",
 					description:
 						"ALL-GIRL SPOOKY JAPANESE GOTH BAND! SCARY VISUAL KEI MAKEUP, BLACK LIPSTICK, GOTHIC GIRLS ",
-					thumbnail: "",
+					thumbnail:
+						"https://images.lacarmina.com/110830_goth_parties_tokyo_japan_clubs_bands_gothic_ebm_industrial_1.jpg",
 					users_id: "1",
 					category_id: "5"
 				}),
@@ -229,7 +235,8 @@ exports.seed = function(knex, Promise) {
 					url: "https://www.smarttech.com/",
 					description:
 						"Our technology solutions and services help you achieve better outcomes, whether it’s improving student learning or making teams more productive.",
-					thumbnail: "",
+					thumbnail:
+						"https://blog.off2class.com/wp-content/uploads/2016/02/interactive-white-board.png",
 					users_id: "2",
 					category_id: "2"
 				}),
