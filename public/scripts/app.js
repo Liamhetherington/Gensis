@@ -7,4 +7,7 @@ $(document).ready(function() {
 
 		// console.log($(e.target).attr("data-value"));
 	});
+
+	let unformatedDate = $("#date").text();
+	$("#date").text(moment(unformatedDate).format("MMMM DD, YYYY"));
 });
