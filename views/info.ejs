@@ -19,12 +19,6 @@
 
   <body>
 
-    <!-- <%= JSON.stringify(likes) %> -->
-    <!-- <%= JSON.stringify(comments) %> -->
-    <!-- <%= JSON.stringify(resource) %> -->
-
-
-
     <h1 id="resource-title"> <%= resource.title %></h1>
     <div>
       <img id="resource-media" type="media" src="<%= resource.thumbnail %>"/>
@@ -38,11 +32,11 @@
 
   <form method="POST" action="/rating">
     <div class="rating" data-rating="0">
-        <span value="1">☆</span>
-        <span>☆</span>
-        <span>☆</span>
-        <span>☆</span>
-        <span>☆</span>
+        <span data-value="5">☆</span>
+        <span data-value="4">☆</span>
+        <span data-value="3">☆</span>
+        <span data-value="2">☆</span>
+        <span data-value="1">☆</span>
     </div>
     </form>
 
@@ -68,7 +62,12 @@
 
  <div class="resource-comments">
    <h2>Comments</h2>
-   <ol class="existing-comments" type="text"><%= .comments %></ol>
+   <ol class="existing-comments" type="text">
+    <% comments.forEach(function(item, index){ %>
+    <li><%= item.comment %></li>
+  <%}) %>
+
+   </ol>
  </div>
 
 

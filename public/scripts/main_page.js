@@ -1,22 +1,18 @@
 $(document).ready(function() {
 	loadThumbnails();
-	// $.ajax({
-	// 	type: "GET",
-	// 	url: "/resource",
-	// 	success: resource => {
-	// 		createMainDisplay(resource);
-	// 	}
-	// });
 
 	$("div").on("click", "#thumbnailClick", function() {
-		window.location.replace("/info");
+		window.location.replace("/resource/id");
 	});
 
 	function createMainDisplay(resource) {
+		const $link = $("<a>");
+		$link.attr("href", `/resource/${resource.id}`);
 		let $thumbnail = $("<img>");
 		$thumbnail.attr("src", resource.thumbnail).attr("id", "thumbnailClick");
 		$thumbnail.addClass("thumbnailImage");
-		return $thumbnail;
+		$link.append($thumbnail);
+		return $link;
 	}
 
 	function renderImages(resource) {
@@ -38,3 +34,5 @@ $(document).ready(function() {
 		});
 	}
 });
+
+// 1. before setting handler, get resource(id), use template string to put it into the url, info page pass the resource data in with the template vars, using req.params.resource id
