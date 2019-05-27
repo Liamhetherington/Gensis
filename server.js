@@ -281,40 +281,26 @@ app.get("/resource/:categoryName", (req, res) => {
 		});
 });
 
-app.get("/comments", (req, res) => {
-	knex("comments")
+app.post("/resource/:id/likes", (req, res) => {
+	knex("likes")
 		.insert({
-			resource_id: 1,
+			resource_id: req.params.id,
 			users_id: req.session.id
 		})
-		.then(comments => {
-			return res.json(comments);
-		});
-});
-
-app.post("/likes", (req, res) => {
-	knex.select("id")
-		.from("resource")
 		.then(function(result) {
-			knex("likes")
-				.insert({
-					resource_id: resource.id,
-					users_id: req.session.id
-				})
-				.then(function() {
-					res.json(likes);
-				});
+			return res.redirect(`/resource/${req.params.id}`);
 		});
 });
 
-app.post("/resource/id", (req, res) => {
+app.post("/resource/:id/comments", (req, res) => {
 	knex("comments")
 		.insert({
 			comment: req.body.comment,
+			resource_id: req.params.id,
 			users_id: req.session.id
 		})
 		.then(function(result) {
-			return res.json();
+			return res.redirect(`/resource/${req.params.id}`);
 		});
 });
 
