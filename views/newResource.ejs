@@ -19,6 +19,9 @@
       <% include ./partials/_header %>
 
     <h1>Create a New Resource</h1>
+
+
+
     <form method="POST" action="/new">
     	<div>
     		<label for="title">Titles: </label>
@@ -28,15 +31,18 @@
     		<label for="source_url">URL: </label>
     		<input type="URL" name="source_url" placeholder="http://" required/>
     	</div>
+
         <div>
-            <h4>Category</h4>
-            <select name="category">
-            <option value="all">all</option>
-            <option value="design">design</option>
-            <option value="food">food</option>
-            <option value="coding">coding</option>
-            </select>
+
+              <h4>Category</h4>
+              <select name="category">
+              <% newTopic.forEach(function(item, index){ %>
+              <option value="<%= item %>"><%= item %></option>
+              <% }) %>
+             </select>
+
         </div>
+
             <label for="thumbnail_url">Image: </label>
             <input type="URL" name="thumbnail_url" placeholder="http://" required/>
         </div>

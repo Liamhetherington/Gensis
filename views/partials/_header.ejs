@@ -1,17 +1,21 @@
+<link href="https://fonts.googleapis.com/css?family=Bungee+Shade&display=swap" rel="stylesheet">
 <header>
   <div class="topnav">
-    <a class="active" href="/">Home</a>
-
+    <h1 class="welcome"></h1>
     <%if(username){%>
-    <p>Logged In As: <%= username %></p>
-    <form method="POST" action="/logout">
-          <button type="submit" class="btn btn-primary">Logout</button>
-    </form>
-  <% }else{ %>
-   <a href='/login'>Login</a>
-  <% } %>
-
-      <a href="/genesis">My Resources</a>
+    <p>Hello, <%= username %>! Welcome to Genesis </p>
+    <div>
+     <a class="active" href="/">Home</a>
+     <a href="/genesis">My Resources</a>
+     <form method="POST" action="/logout">
+            <button type="submit" class="btn btn-primary">Logout</button>
+      </form>
+      <% }else{ %>
+       <a href='/login'>Login</a>
+      <% } %>
+    </div>
+    <div>
       <input type="text" placeholder="Search..">
+    </div>
   </div>
 </header>

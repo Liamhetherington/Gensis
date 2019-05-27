@@ -1,36 +1,48 @@
-jQuery.fn.filterByText = function(textbox) {
-  return this.each(function() {
-    var select = this;
-    var options = [];
-    $(select).find('option').each(function() {
-      options.push({
-        value: $(this).val(),
-        text: $(this).text()
-      });
+$(document).ready(function() {
+  loadThumbnails();
+
+
+  function createMainDisplay(resource) {
+    let $thumbnail = $("<img>");
+    $thumbnail.attr("src", resource.thumbnail);
+    $thumbnail.addClass("thumbnailImage");
+    return $thumbnail;
+  }
+
+  function renderImages(resource) {
+    $('#thumbnails').empty()
+    let $thumbnails = $("#thumbnails");
+
+    resource.forEach(function(images) {
+      let $imageRender = createMainDisplay(images);
+
+      $thumbnails.prepend($imageRender);
     });
-    $(select).data('options', options);
+  }
 
-    $(textbox).bind('change keyup', function() {
-      var options = $(select).empty().data('options');
-      var search = $.trim($(this).val());
-      var regex = new RegExp(search, "gi");
-
-      $.each(options, function(i) {
-        var option = options[i];
-        if (option.text.match(regex) !== null) {
-          $(select).append(
-            $('<option>').text(option.text).val(option.value)
-          );
-        }
-      });
+  function loadThumbnails() {
+    $.ajax({
+      type: "GET",
+      url: "/resource",
+      data: JSON,
+      success: function(data) {
+        console.log(data)
+        renderImages(data);
+      }
     });
-  });
-};
+  }
 
+$("#drop").change(function () {
+  $.ajax({
+      type: "GET",
+      url: `/resource/${$( "#drop option:selected" ).text()}`,
+      data: JSON,
+      success: function(data) {
+        // console.log(data)
+        renderImages(data);
+        //renderImages(data,id);
+      }
+    });
+  })
 
-$(function() {
-  $('select').filterByText($('input'));
 });
-
-
-*every time choose a topic, empty container(twetter)

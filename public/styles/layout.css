@@ -1,0 +1,252 @@
+.container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: 20px;
+  width: 100%;
+  margin: 10px;
+}
+
+div.thumbnail.grid-sizer,
+
+div.thumbnail.grid-item {
+  margin: 5px;
+  font-family: Bungee Shade;
+  border-radius: 10px;
+  text-align: center;
+  color:red;
+  height: 300px;
+  width: 300px;
+  border: red solid 2px;
+}
+
+
+@media only screen and (max-width : 1199px),
+only screen and (max-device-width : 1199px){
+ #container {
+ width: 1000px;
+ }
+}
+
+
+@media only screen and (max-width : 999px),
+only screen and (max-device-width : 999px){
+ #container {
+ width: 800px;
+ }
+}
+
+@media only screen and (max-width : 799px),
+only screen and (max-device-width : 799px){
+ #container {
+ width: 600px;
+ }
+}
+
+@media only screen and (max-width : 599px),
+only screen and (max-device-width : 599px){
+ #container {
+ width: 400px;
+ }
+}
+
+@media only screen and (max-width : 399px),
+only screen and (max-device-width : 399px){
+ #container {
+ width: 200px;
+ }
+}
+
+body {
+  background:
+  linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+  linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+  linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+  linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+  linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+  linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+  background-color: #131313;
+  background-size: 20px 20px;
+}
+
+body h1 {
+  color: white;
+  margin-left: 50px;
+}
+
+/*body section {
+  float: right;
+  margin-right: 150px;
+  width: 300px;
+  height: 280px;
+}
+
+body div.comment {
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
+body div.existing-comments {
+  padding: 5px;
+}
+
+body button.commentButton {
+  color: red;
+  border-radius: 10px;
+}
+
+body .thumbnailImage {
+  width: 100px;
+  height: 100px;
+}
+
+body textarea {
+  height: 180px;
+  width: 300px;
+  padding: 4px;
+}
+
+body .rating {
+  float: right;
+}
+
+body .rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+
+body .rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+
+body .rating > span:hover:before,
+body .rating > span:hover ~ span:before {
+  content: "\2605";
+  position: absolute;
+}
+
+body [data-rating="1"] > span:nth-child(5):before,
+body [data-rating="1"] > span:nth-child(5) ~ span:before {
+  content: "\2605";
+  position: absolute;
+}
+
+body [data-rating="2"] > span:nth-child(4):before,
+body [data-rating="2"] > span:nth-child(4) ~ span:before {
+  content: "\2605";
+  position: absolute;
+}
+
+body [data-rating="3"] > span:nth-child(3):before,
+body [data-rating="3"] > span:nth-child(3) ~ span:before {
+  content: "\2605";
+  position: absolute;
+}
+
+body [data-rating="4"] > span:nth-child(2):before,
+body [data-rating="4"] > span:nth-child(2) ~ span:before {
+  content: "\2605";
+  position: absolute;
+}
+
+body [data-rating="5"] > span:nth-child(1):before,
+body [data-rating="5"] > span:nth-child(1) ~ span:before {
+  content: "\2605";
+  position: absolute;
+}*/
+
+body article {
+  float: right;
+  margin-right: 150px;
+  margin-top: 0px;
+}
+
+body .topnav {
+  display: flex;
+  width:100%;
+  height: 220px;
+  overflow: hidden;
+  padding: 15px;
+  padding-top: 10px;
+  background:
+  linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+  linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+  linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+  linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+  linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+  linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+  background-color: #131313;
+  background-size: 20px 20px;
+}
+
+body .topnav p {
+  font-family: 'Bungee Shade', cursive;
+  width: 100%;
+  color: white;
+  font-size: 3em;
+  margin: 5px;
+  margin-top: 30px;
+}
+
+
+body .topnav a {
+  color: black;
+  background-color: black;
+  width: 150px;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  margin-top:5px;
+}
+
+body .topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+body .topnav a.active {
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+  width: 150px;
+  text-align: center;
+}
+
+body .topnav input[type="text"] {
+  border-radius: 10px;
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+
+body .topnav a,
+body .topnav input[type="text"] {
+  float: none;
+  display: block;
+  text-align: center;
+  width: 150px;
+  padding: 14px;
+}
+
+body .topnav input[type="text"] {
+  width: 300px;
+  margin-left: 40px;
+  border: 1px solid #ccc;
+}
+
+button.btn.btn-primary {
+  border-radius: 10px;
+  background-color: black;
+  border: #2196f3;
+  color: white;
+  width: 150px;
+  text-align: center;
+  line-height: 45px;
+  margin-top:5px;
+}
