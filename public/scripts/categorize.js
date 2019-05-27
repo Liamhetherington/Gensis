@@ -10,12 +10,12 @@ $(document).ready(function() {
   }
 
   function renderImages(resource) {
+    $('#tweet-container').empty()
     let $thumbnails = $("#thumbnails");
-    console.log($thumbnails);
-    console.log(resource);
+
     resource.forEach(function(images) {
       let $imageRender = createMainDisplay(images);
-      console.log($imageRender);
+
       $thumbnails.prepend($imageRender);
     });
   }
@@ -26,14 +26,75 @@ $(document).ready(function() {
       url: "/resource",
       data: JSON,
       success: function(data) {
+        console.log(data)
         renderImages(data);
       }
     });
   }
+
+$("#drop").change(function () {
+        //event.preventDefault();
+         // $("input[value='category']").hide();
+         // var id = $(this).attr('data-id');
+         // $('#' + id).show(500);
+//loadThumbnails($(`#dropdown`).val())
+//  console.log("in dropdown")
+//  console.log($( "#drop option:selected" ).text());
+//  //console.log(1,$(this).text())
+// // console.log(2,$(this).val())
+//  //console.log(3,$(this).children(`.dropdown`).val())
+// })
+  $.ajax({
+      type: "GET",
+      url: `/resource/${$( "#drop option:selected" ).text()}`,
+      data: JSON,
+      success: function(data) {
+        console.log(data)
+        renderImages(data);
+        //renderImages(data,id);
+      }
+    });
+  })
+
+
+
 });
+/////////////////
+/////////////
+////////////////
+//$(document).on('change',".drop", function(event) {
+
+
+////////////////
+//////////////
+////////////////
+
+// });
 
 
 
+    //     var data = $(this).serialize();
+    //     if ($('.empty').val() === "") {
+    //         $(".error").slideDown()
+    //         $(".error").text('tweet is empty')
+    //         return false;
+    //     } else if (data.length > 140) {
+    //         $(".error").slideDown()
+    //         $(".error").text('tweet content is too long')
+    //          return false;
+    //     } else {
+    //         $(".error").slideUp()
+    //         $.ajax({
+    //             url: '/tweets',
+    //             method: 'POST',
+    //             data: data,
+    //             success: loadTweets,
+    //             error: function() {
+    //                 console.log("error")
+    //             }
+    //         })
+    //     }
+    // });
 
 
 

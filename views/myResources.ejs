@@ -20,9 +20,9 @@
 
 <form method="GET" action="/genesis">
   <h4>Category</h4>
- <select name="category">
+ <select id = "drop" name="category">
 <% newTopic.forEach(function(item, index){ %>
-     <option value="<%= item %>"><%= item %></option>
+     <option class="dropdown" value="<%= item %>"><%= item %></option>
 <% }) %>
  </select>
  </form>

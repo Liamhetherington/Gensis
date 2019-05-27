@@ -54,17 +54,17 @@ app.use("/api/users", usersRoutes(knex));
 
 app.get("/", (req, res) => {
 	if (req.session.id === undefined) {
-		console.log("SESSION WAS EMPTY");
+		// console.log("SESSION WAS EMPTY");
 		res.render("index", { username: "" });
 	} else {
-		console.log("session was not empty. SUCCESS");
-		console.log("Session id ", req.session.id);
-		console.log("type of session ", typeof req.session.id);
+		// console.log("session was not empty. SUCCESS");
+		// console.log("Session id ", req.session.id);
+		// console.log("type of session ", typeof req.session.id);
 		knex.select("username")
 			.from("users")
 			.where("id", req.session.id)
 			.then(function(result) {
-				console.log(result[0].username);
+				// console.log(result[0].username);
 				let templateVars = { username: result[0].username };
 				res.render("index", templateVars);
 			});
@@ -253,7 +253,23 @@ app.get("/resource", (req, res) => {
 
 
 
+app.get("/resource/:categoryName", (req, res) => {
+console.log("in get",req.params.categoryName)
+	knex.select("id")
+		.from("category")
+		.where("topic", req.params.categoryName)
+		.then(function(result) {
+console.log("get",result)
+			//got the category ID
+			console.log(result[0])
+			console.log(result[0].id)
+			knex("resource").where("category_id", result[0].id).then(resource => {
+		return res.json(resource);
+	});
 
+		});
+
+});
 
 
 
