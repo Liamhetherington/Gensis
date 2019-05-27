@@ -4,8 +4,6 @@ $(document).ready(function() {
 		$(e.target)
 			.parent()
 			.attr("data-rating", rating);
-
-		// console.log($(e.target).attr("data-value"));
 	});
 
 	let unformatedDate = $("#date").text();

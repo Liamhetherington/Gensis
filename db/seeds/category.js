@@ -18,6 +18,10 @@ exports.seed = function(knex, Promise) {
         knex("category").insert({
           id: 4,
           topic: "coding"
+        }),
+        knex("category").insert({
+          id: 5,
+          topic: "music"
         })
       ]);
     });

@@ -44,7 +44,7 @@ body {
   // rating stars
   .rating {
     unicode-bidi: bidi-override;
-    direction: rtl;
+    direction: ltr;
   }
   .rating > span {
     display: inline-block;

@@ -21,7 +21,7 @@
   <body>
     <% include ./partials/_header %>
 
-    <h1 id="resource-title"> <%= resource.title %></h1>
+    <h1 id="resource-title"><a href="<%=resource.url%>"><%= resource.title %></a></h1>
     <div>
       <img id="resource-media" type="media" src="<%= resource.thumbnail %>"/>
       <section class="description-box">
@@ -34,11 +34,11 @@
 
   <form method="POST" action="/rating">
     <div class="rating" data-rating="0">
-        <span data-value="1">☆</span>
-        <span data-value="2">☆</span>
-        <span data-value="3">☆</span>
-        <span data-value="4">☆</span>
         <span data-value="5">☆</span>
+        <span data-value="4">☆</span>
+        <span data-value="3">☆</span>
+        <span data-value="2">☆</span>
+        <span data-value="1">☆</span>
     </div>
     </form>
 
@@ -69,7 +69,7 @@
    <h2>Comments</h2>
    <ol class="existing-comments" type="text">
     <% comments.forEach(function(item, index){ %>
-    <li><%= item.comment %></li>
+    <ul><%= item.comment %></ul>
   <%}) %>
 
    </ol>
