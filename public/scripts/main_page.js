@@ -2,13 +2,7 @@
 
 $(document).ready(function() {
 	loadThumbnails();
-	// $.ajax({
-	// 	type: "GET",
-	// 	url: "/resource",
-	// 	success: resource => {
-	// 		createMainDisplay(resource);
-	// 	}
-	// });
+
 
 	function createMainDisplay(resource) {
 		let $thumbnail = $("<img>");
@@ -24,7 +18,7 @@ $(document).ready(function() {
 		resource.forEach(function(images) {
 			let $imageRender = createMainDisplay(images);
 			console.log($imageRender);
-			$thumbnails.append($imageRender);
+			$thumbnails.prepend($imageRender);
 		});
 	}
 
