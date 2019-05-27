@@ -6,9 +6,7 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-<!--     <link rel="stylesheet" href="/styles/info_page_styling.css" type="text/css" />
- -->
-
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/comments_container.js"></script>
@@ -16,20 +14,14 @@
   </head>
 
   <body>
-
-
     <h1 id="resource-title"> <%= resource.title %></h1>
-
     <div>
       <img id="resource-media" type="media" src="<%= resource.thumbnail %>"/>
       <section class="description-box">
-
         <h2>Description</h2>
           <article id="description"><%= resource.description %>
           </article>
       </section>
-
-
     <form method="POST" action="/rating">
       <div class="rating" data-rating="0">
         <span data-value="1">☆</span>
@@ -39,7 +31,6 @@
         <span data-value="5">☆</span>
       </div>
     </form>
-
   <form id="new-like" method="POST" action="/resource/<%= resource.id %>/likes">
     <span>
       <%=likes.length %>
@@ -52,13 +43,12 @@
       <span id="date"><%=resource.date_created  %></span>
     </div>
     </div>
-
     <div class="comment">
       <form id = "new-post" method="POST" action = "/resource/<%= resource.id %>/comments">
          <input type="text" name="comment" />
          <button class="commentButton" type="submit">Add a Comment</button>
        </form>
-   </div>
+    </div>
 
  <div class="resource-comments">
    <h2>Comments</h2>

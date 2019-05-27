@@ -10,20 +10,27 @@
 div.thumbnail.grid-sizer,
 
 div.thumbnail.grid-item {
-  margin: 5px;
-  font-family: Bungee Shade;
-  border-radius: 10px;
-  text-align: center;
-  color:red;
-  height: 300px;
+  /*transition: box-shadow .3s;*/
   width: 300px;
-  border: red solid 2px;
+  height: 500px;
+  margin: 50px;
+  border-radius:10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  overflow: auto;
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+
 }
 
+div.thumbnail.grid-item:hover {
+  box-shadow: 0 0 15px rgba(33,33,33,1);
+}
 
 @media only screen and (max-width : 1199px),
 only screen and (max-device-width : 1199px){
- #container {
+ .container {
  width: 1000px;
  }
 }
@@ -31,42 +38,35 @@ only screen and (max-device-width : 1199px){
 
 @media only screen and (max-width : 999px),
 only screen and (max-device-width : 999px){
- #container {
+ .container {
  width: 800px;
  }
 }
 
 @media only screen and (max-width : 799px),
 only screen and (max-device-width : 799px){
- #container {
+ .container {
  width: 600px;
  }
 }
 
 @media only screen and (max-width : 599px),
 only screen and (max-device-width : 599px){
- #container {
+ .container {
  width: 400px;
  }
 }
 
 @media only screen and (max-width : 399px),
 only screen and (max-device-width : 399px){
- #container {
+ .container {
  width: 200px;
  }
 }
 
 body {
-  background:
-  linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
-  linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
-  linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
-  linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
-  linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
-  linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
-  background-color: #131313;
-  background-size: 20px 20px;
+  margin: 20px;
+  background-color: #326871;
 }
 
 body h1 {
@@ -153,25 +153,17 @@ body .topnav {
   display: flex;
   width:100%;
   height: 220px;
-  overflow: hidden;
+  overflow: auto;
   padding: 15px;
   padding-top: 10px;
-  background:
-  linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
-  linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
-  linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
-  linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
-  linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
-  linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
-  background-color: #131313;
-  background-size: 20px 20px;
+  background-color: #326871;
 }
 
 body .topnav p {
-  font-family: 'Bungee Shade', cursive;
+ font-family: 'Quicksand', sans-serif;
   width: 100%;
-  color: white;
-  font-size: 3em;
+  color: #CAEBF2;
+  font-size: 4em;
   margin: 5px;
   margin-top: 30px;
 }
@@ -194,6 +186,7 @@ body .topnav a:hover {
 }
 
 body .topnav a.active {
+  font-family: 'Quicksand', sans-serif;
   border-radius: 10px;
   background-color: black;
   color: white;
@@ -213,6 +206,7 @@ body .topnav input[type="text"] {
 
 body .topnav a,
 body .topnav input[type="text"] {
+  font-family: 'Quicksand', sans-serif;
   float: none;
   display: block;
   text-align: center;
@@ -221,12 +215,14 @@ body .topnav input[type="text"] {
 }
 
 body .topnav input[type="text"] {
+  font-family: 'Quicksand', sans-serif;
   width: 300px;
   margin-left: 40px;
   border: 1px solid #ccc;
 }
 
 button.btn.btn-primary {
+  font-family: 'Quicksand', sans-serif;
   border-radius: 10px;
   background-color: black;
   border: #2196f3;
@@ -235,4 +231,71 @@ button.btn.btn-primary {
   text-align: center;
   line-height: 45px;
   margin-top:5px;
+}
+
+/*** LOGIN PAGE ***/
+
+.login {
+  color:white;
+  font-size:2em;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.credentials{
+  color:white;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/*** My Genesis Board***/
+
+h4 {
+  color:white;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2em;
+  margin-top: 30px;
+}
+
+textarea {
+  margin-top: 10px;
+  padding:5px;
+  border-radius: 10px;
+}
+
+.add-category {
+  margin-bottom: 5px;
+  display: inherit;
+  border-radius: 10px;
+}
+
+.create-resource-button {
+  margin-bottom: 5px;
+  display: inherit;
+  border-radius: 10px;
+}
+
+img#thumbnailClick.thumbnailImage {
+  max-width: 350px;
+  margin: 20px;
+}
+
+div#thumbnails {
+  width: 400px;
+  position: relative;
+}
+
+h1.my-gen {
+  display: inline-block;
+  width: 300px;
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.button-login {
+  height: 50px;
+}
+
+.searchbar {
+  height: 50px;
+  border-radius: 10px;
+  margin-left: 50px;
 }
