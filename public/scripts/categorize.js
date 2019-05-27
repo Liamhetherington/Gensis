@@ -1,11 +1,13 @@
 $(document).ready(function() {
   loadThumbnails();
 
+
   $("div").on("click", "#thumbnailClick", function() {
     window.location.replace("/resource/id");
   });
 
   function createMainDisplay(resource) {
+
     const $link = $("<a>");
     $link.attr("href", `/resource/${resource.id}`);
     let $thumbnail = $("<img>");
