@@ -255,7 +255,7 @@ app.get("/resource/:id", (req, res) => {
 							username: result[0].username,
 							...details,
 						};
-						console.log(templateVars)
+						// console.log(templateVars)
 						res.render("info", templateVars);
 					});
 
