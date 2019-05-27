@@ -10,7 +10,7 @@ $(document).ready(function() {
   }
 
   function renderImages(resource) {
-    $('#tweet-container').empty()
+    $('#thumbnails').empty()
     let $thumbnails = $("#thumbnails");
 
     resource.forEach(function(images) {
