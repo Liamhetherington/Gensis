@@ -13,7 +13,7 @@
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/comments_container.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
-     
+
 
 
   </head>
@@ -34,17 +34,17 @@
 
   <form method="POST" action="/rating">
     <div class="rating" data-rating="0">
-        <span data-value="5">☆</span>
-        <span data-value="4">☆</span>
-        <span data-value="3">☆</span>
-        <span data-value="2">☆</span>
         <span data-value="1">☆</span>
+        <span data-value="2">☆</span>
+        <span data-value="3">☆</span>
+        <span data-value="4">☆</span>
+        <span data-value="5">☆</span>
     </div>
     </form>
 
-  <form method="POST" action="/likes">
+  <form id="new-like" method="POST" action="/resource/<%= resource.id %>/likes">
     <span>
-      <%=likes %>
+      <%=likes.length %>
     <button class="Like">
                 <text>Like</text>
     </button>
@@ -56,8 +56,11 @@
 
     <div class="comment">
 
-     <input type="text" name="comment" />
 
+
+  <form id = "new-post" method="POST" action = "/resource/<%= resource.id %>/comments">
+
+     <input type="text" name="comment" />
      <button class="commentButton" type="submit">Add a Comment</button>
    </form>
  </div>
