@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Resource Info</title>
@@ -11,24 +11,27 @@
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <!-- <script type="text/javascript" src="/scripts/comments_container.js"></script> -->
     <script type="text/javascript" src="/scripts/app.js"></script>
-    <script type="text/javascript" src="/scripts/comments_container.js"></script>
 
 
   </head>
 
   <body>
 
-    <% include ./partials/_header %>
+    <!-- <%= JSON.stringify(likes) %> -->
+    <!-- <%= JSON.stringify(comments) %> -->
+    <!-- <%= JSON.stringify(resource) %> -->
 
 
-    <h1 id="resource-title"></h1>
+
+    <h1 id="resource-title"> <%= resource.title %></h1>
     <div>
-      <img id="resource-media" type="media"/>
+      <img id="resource-media" type="media" src="<%= resource.thumbnail %>"/>
       <section class="description-box">
 
         <h2>Description</h2>
-          <article id="description">
+          <article id="description"><%= resource.description %>
           </article>
       </section>
 
@@ -45,27 +48,29 @@
 
   <form method="POST" action="/likes">
     <span>
+      <%=likes %>
     <button class="Like">
                 <text>Like</text>
     </button>
     </span>
   </form>
     <div id="date-div">
-      <span id="date"></span>
+      <span id="date"><%= resource.date_created %></span>
     </div>
 
+    <div class="comment">
+  
+     <input type="text" name="comment" />
 
-  <div class="comment">
-    <form method="POST" action="/info">
-      <input type="text" name="comment" />
-      <button class="commentButton" type="submit">Add a Comment</button>
-    </form>
+     <button class="commentButton" type="submit">Add a Comment</button>
+   </form>
+ </div>
 
-      <article class="existing-comments" type="text"></article>
+ <div class="resource-comments">
+   <h2>Comments</h2>
+   <ol class="existing-comments" type="text"><%= .comments %></ol>
+ </div>
 
-    </div>
-
-    </form>
 
   </body>
 </html>
