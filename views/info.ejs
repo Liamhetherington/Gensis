@@ -19,9 +19,6 @@
 
   <body>
 
-    <% include ./partials/_header %>
-
-
     <h1 id="resource-title"></h1>
     <div>
       <img id="resource-media" type="media"/>
@@ -33,7 +30,7 @@
       </section>
 
 
-  <form method="POST" action="/rating">
+    <form method="POST" action="/rating">
     <div class="rating" data-rating="0">
         <span value="1">☆</span>
         <span>☆</span>
@@ -53,19 +50,27 @@
     <div id="date-div">
       <span id="date"></span>
     </div>
+    </div>
 
 
   <div class="comment">
-    <form method="POST" action="/info">
+    <form id ="new-post" method="POST" action="/resource/<%= resource_id %>/comments">
       <input type="text" name="comment" />
+
       <button class="commentButton" type="submit">Add a Comment</button>
     </form>
+  </div>
 
-      <article class="existing-comments" type="text"></article>
+  <div class="resource-comments">
+    <h2>Comments</h2>
+    <ol class="existing-comments" type="text"></ol>
+  </div>
 
+
+      </article>
+
+      </section>
     </div>
-
-    </form>
 
   </body>
 </html>

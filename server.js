@@ -50,6 +50,12 @@ app.use(express.static("public"));
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
 
+
+//// HELPER functions ////
+
+
+
+
 // Home page
 
 app.get("/", (req, res) => {
@@ -169,14 +175,46 @@ app.post("/genesis", (req, res) => {
 	res.redirect("/new");
 });
 
+function getOneMyResource(id) {
+  return knex
+    .select("*")
+    .from("resource")
+    .where("id", id);
+}
+
+function getCommentsForResource(resourceId) {
+  return knex
+    .select("*")
+    .from("comments")
+    .where("resource_id", resourceId);
+}
+
+function getLikesForResource(resourceId) {
+  return knex
+    .select("*")
+    .from("likes")
+    .where("resource_id", resourceId);
+}
+
+async function getResourceDetails(resourceId) {
+  const allResource = {
+    likes: await getLikesForResource(resourceId),
+    comments: await getCommentsForResource(resourceId),
+    resource: (await getOneMyResource(resourceId))[0]
+  };
+  return allResource;
+}
+
 //Individual Resource Page
-app.get("/info", (req, res) => {
-	if (req.session.id === undefined) {
-		res.render("info", { username: "" });
-	}
-	let templateVars = { username: req.session.id };
+app.get("/resource/:id", (req, res) => {
+	const id = req.params.id;
+  getOneMyResource(id).then(resource => {
+	let templateVars = { username: req.session.id,
+                       resource_id: req.params.id  };
 	res.render("info", templateVars);
+  })
 });
+
 
 app.get("/resource", (req, res) => {
 	users_id: req.session.id;
@@ -185,13 +223,10 @@ app.get("/resource", (req, res) => {
 	});
 	// res.render("info");
 });
+
 app.get("/comments", (req, res) => {
-	knex("comments")
-		.insert({
-			resource_id: 1,
-			users_id: req.session.id
-		})
-		.then(comments => {
+  users_id: req.session.id
+	knex("comments").then(comments => {
 			return res.json(comments);
 		});
 });
@@ -214,17 +249,16 @@ app.post("/likes", (req, res) => {
 	// 3. update resource likes
 });
 
-app.post("/info", (req, res) => {
-	knex("comments")
+app.post("/resource/:id/comments", (req, res) => {
+  knex("comments")
     .insert({
       comment: req.body.comment,
-      users_id: req.body.users_id,
-      resource_id: req.body.resource_id
+      users_id: req.session.id,
+      resource_id: req.params.id
     })
     .then(function(result) {
-      return res.json();
+      res.redirect("/info");
     })
-
 });
 
 app.post("/rating", (req, res) => {
