@@ -10,7 +10,7 @@ const sass = require("node-sass-middleware");
 const app = express();
 const cookieSession = require("cookie-session");
 const bcrypt = require("bcrypt");
-
+const moment = require("moment");
 const knexConfig = require("./knexfile");
 const knex = require("knex")(knexConfig[ENV]);
 const morgan = require("morgan");
@@ -54,17 +54,12 @@ app.use("/api/users", usersRoutes(knex));
 
 app.get("/", (req, res) => {
 	if (req.session.id === undefined) {
-		// console.log("SESSION WAS EMPTY");
 		res.render("index", { username: "" });
 	} else {
-		// console.log("session was not empty. SUCCESS");
-		// console.log("Session id ", req.session.id);
-		// console.log("type of session ", typeof req.session.id);
 		knex.select("username")
 			.from("users")
 			.where("id", req.session.id)
 			.then(function(result) {
-				// console.log(result[0].username);
 				let templateVars = { username: result[0].username };
 				res.render("index", templateVars);
 			});
@@ -82,7 +77,6 @@ app.post("/login", (req, res) => {
 			console.log("we are good to go");
 			req.session.id = value;
 			res.redirect("/");
-			//console.log("user found in the database with id ", value);
 		} else {
 			console.log("something happened ");
 			res.send("Username not found");
@@ -90,7 +84,6 @@ app.post("/login", (req, res) => {
 	});
 });
 
-//function to check if the user is existed in database
 function checkUsername(username) {
 	return knex
 		.select("id")
@@ -112,27 +105,26 @@ app.get("/new", (req, res) => {
 		return res.render("index", { username: "" });
 	}
 
-knex.select("topic")
+	knex.select("topic")
 		.from("category")
 		.then(function(topics) {
-    knex.select("username")
-			.from("users")
-			.where("id", req.session.id)
-			.then(function(result) {
-				let templateVars = {
-          username: result[0].username,
-          newTopic: topics.map(function (item, index) {
-                   return item.topic
-        })
-           };
-				res.render("newResource", templateVars);
-			});
+			knex.select("username")
+				.from("users")
+				.where("id", req.session.id)
+				.then(function(result) {
+					let templateVars = {
+						username: result[0].username,
+						newTopic: topics.map(function(item, index) {
+							return item.topic;
+						})
+					};
+					res.render("newResource", templateVars);
+				});
 		});
 });
 
-
-
 app.post("/new", (req, res) => {
+	console.log(req.body.category);
 	knex.select("id")
 		.from("category")
 		.where("topic", req.body.category)
@@ -142,7 +134,7 @@ app.post("/new", (req, res) => {
 				.insert({
 					title: req.body.title,
 					url: req.body.source_url,
-					// date_created : "5/23/2019",
+					date_created: new Date(),
 					thumbnail: req.body.thumbnail_url,
 					description: req.body.description,
 					users_id: parseInt(req.session.id),
@@ -154,8 +146,6 @@ app.post("/new", (req, res) => {
 		});
 });
 
-
-
 app.get("/genesis", (req, res) => {
 	if (req.session.id === undefined) {
 		return res.render("index", { username: "" });
@@ -164,117 +154,128 @@ app.get("/genesis", (req, res) => {
 	knex.select("topic")
 		.from("category")
 		.then(function(topics) {
-    knex.select("username")
-			.from("users")
-			.where("id", req.session.id)
-			.then(function(result) {
-				let templateVars = {
-          username: result[0].username,
-          newTopic: topics.map(function (item, index) {
-                   return item.topic
-        })
-           };
-				res.render("myResources", templateVars);
-			});
+			knex.select("username")
+				.from("users")
+				.where("id", req.session.id)
+				.then(function(result) {
+					let templateVars = {
+						username: result[0].username,
+						newTopic: topics.map(function(item, index) {
+							return item.topic;
+						})
+					};
+					res.render("myResources", templateVars);
+				});
 		});
 });
-
-
-
-
 
 app.post("/genesis", (req, res) => {
 	res.redirect("/new");
 });
 
-
-
-app.post("/category", (req, res) =>{
-	console.log(req.body)
-   if (req.session.id === undefined) {
+app.post("/category", (req, res) => {
+	console.log(req.body);
+	if (req.session.id === undefined) {
 		return res.render("index", { username: "" });
 	}
 	knex("category")
-				.insert({
-					topic: req.body.addNewTopic
-				})
-				.then(function(result) {
-
-					knex.select("topic")
-							.from("category")
-							.then(function(topics) {
-					    knex.select("username")
-								.from("users")
-								.where("id", req.session.id)
-								.then(function(result) {
-									let templateVars = {
-					          username: result[0].username,
-					          newTopic: topics.map(function (item, index) {
-					                   return item.topic
-					        })
-					      };
-								res.render("myResources", templateVars);
-							});
+		.insert({
+			topic: req.body.addNewTopic
+		})
+		.then(function(result) {
+			knex.select("topic")
+				.from("category")
+				.then(function(topics) {
+					knex.select("username")
+						.from("users")
+						.where("id", req.session.id)
+						.then(function(result) {
+							let templateVars = {
+								username: result[0].username,
+								newTopic: topics.map(function(item, index) {
+									return item.topic;
+								})
+							};
+							res.render("myResources", templateVars);
 						});
 				});
+		});
 });
-
-
-
-
-
-
-
-
-
-
 
 //Individual Resource Page
-app.get("/info", (req, res) => {
-	if (req.session.id === undefined) {
-		res.render("info", { username: "" });
-	}
-	let templateVars = { username: req.session.id };
-	res.render("info", templateVars);
+// app.get("/info/", (req, res) => {
+// 	if (req.session.id === undefined) {
+// 		res.render("info", { username: "" });
+// 	}
+// 	let templateVars = { username: req.session.id };
+// 	res.render("info", templateVars);
+// });
+
+function getAllMyResources() {
+	return knex.select("*").from("resource");
+}
+
+function getOneMyResource(id) {
+	return knex
+		.select("*")
+		.from("resource")
+		.where("id", id);
+}
+
+function getCommentsForResource(resourceId) {
+	return knex
+		.select("*")
+		.from("comments")
+		.where("resource_id", resourceId);
+}
+
+function getLikesForResource(resourceId) {
+	return knex
+		.select("*")
+		.from("likes")
+		.where("resource_id", resourceId);
+}
+
+async function getResourceDetails(resourceId) {
+	const allResource = {
+		likes: await getLikesForResource(resourceId),
+		comments: await getCommentsForResource(resourceId),
+		resource: (await getOneMyResource(resourceId))[0]
+	};
+	return allResource;
+}
+
+app.get("/resource/:id", (req, res) => {
+	const id = req.params.id;
+	getResourceDetails(id).then(details => {
+		res.render("info", details);
+	});
 });
-
-
-
-
-
 
 app.get("/resource", (req, res) => {
 	users_id: req.session.id;
 	knex("resource").then(resource => {
 		return res.json(resource);
 	});
-	// res.render("info");
 });
 
-
-
-app.get("/resource/:categoryName", (req, res) => {
-console.log("in get",req.params.categoryName)
+app.get("/resource/category/:categoryName", (req, res) => {
+	console.log("in get", req.params.categoryName);
 	knex.select("id")
 		.from("category")
 		.where("topic", req.params.categoryName)
 		.then(function(result) {
-console.log("get",result)
+			console.log("get", result);
 			//got the category ID
-			console.log(result[0])
-			console.log(result[0].id)
-			knex("resource").where("category_id", result[0].id).then(resource => {
-		return res.json(resource);
-	});
-
+			console.log(result[0]);
+			console.log(result[0].id);
+			knex("resource")
+				.where("category_id", result[0].id)
+				.then(resource => {
+					return res.json(resource);
+				});
 		});
-
 });
-
-
-
-
-
 
 app.get("/comments", (req, res) => {
 	knex("comments")
@@ -287,31 +288,26 @@ app.get("/comments", (req, res) => {
 		});
 });
 
-
 app.post("/likes", (req, res) => {
-	console.log(req.body);
-	knex("likes")
-		.insert({
-			resource_id: 1,
-			users_id: req.session.id
-		})
-		.then(function(like) {
-			console.log(like);
-			res.json();
+	knex.select("id")
+		.from("resource")
+		.then(function(result) {
+			knex("likes")
+				.insert({
+					resource_id: resource.id,
+					users_id: req.session.id
+				})
+				.then(function() {
+					res.json(likes);
+				});
 		});
-
-	// 1. write to likes table
-	// 2. get resource likes
-	// knex("resource")
-	// 3. update resource likes
 });
 
-app.post("/info", (req, res) => {
+app.post("/resource/id", (req, res) => {
 	knex("comments")
 		.insert({
 			comment: req.body.comment,
-			users_id: req.session.id,
-			resource_id: req.body.resource_id
+			users_id: req.session.id
 		})
 		.then(function(result) {
 			return res.json();

@@ -1,23 +1,24 @@
-// loadThumbnails();
-
 $(document).ready(function() {
 	loadThumbnails();
 
+	$("div").on("click", "#thumbnailClick", function() {
+		window.location.replace("/resource/id");
+	});
 
 	function createMainDisplay(resource) {
+		const $link = $("<a>");
+		$link.attr("href", `/resource/${resource.id}`);
 		let $thumbnail = $("<img>");
-		$thumbnail.attr("src", resource.thumbnail);
+		$thumbnail.attr("src", resource.thumbnail).attr("id", "thumbnailClick");
 		$thumbnail.addClass("thumbnailImage");
-		return $thumbnail;
+		$link.append($thumbnail);
+		return $link;
 	}
 
 	function renderImages(resource) {
 		let $thumbnails = $("#thumbnails");
-		console.log($thumbnails);
-		console.log(resource);
 		resource.forEach(function(images) {
 			let $imageRender = createMainDisplay(images);
-			console.log($imageRender);
 			$thumbnails.prepend($imageRender);
 		});
 	}
