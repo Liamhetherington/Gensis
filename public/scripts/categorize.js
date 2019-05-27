@@ -35,7 +35,7 @@ $(document).ready(function() {
 $("#drop").change(function () {
   $.ajax({
       type: "GET",
-      url: `/resource/${$( "#drop option:selected" ).text()}`,
+      url: `/resource/category/${$( "#drop option:selected" ).text()}`,
       data: JSON,
       success: function(data) {
         // console.log(data)

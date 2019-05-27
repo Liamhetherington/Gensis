@@ -259,7 +259,7 @@ app.get("/resource", (req, res) => {
 	});
 });
 
-app.get("/resource/:categoryName", (req, res) => {
+app.get("/resource/category/:categoryName", (req, res) => {
 	console.log("in get", req.params.categoryName);
 	knex.select("id")
 		.from("category")
