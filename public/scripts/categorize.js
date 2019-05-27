@@ -8,11 +8,20 @@ $(document).ready(function() {
 // });
 //////////
 ///////////
-  function createMainDisplay(resource) {
+$("div").on("click", "#thumbnailClick", function() {
+    window.location.replace("/resource/id");
+  });
+
+
+
+function createMainDisplay(resource) {
+    const $link = $("<a>");
+    $link.attr("href", `/resource/${resource.id}`);
     let $thumbnail = $("<img>");
-    $thumbnail.attr("src", resource.thumbnail);
+    $thumbnail.attr("src", resource.thumbnail).attr("id", "thumbnailClick");
     $thumbnail.addClass("thumbnailImage");
-    return $thumbnail;
+    $link.append($thumbnail);
+    return $link;
   }
 
   function renderImages(resource) {
