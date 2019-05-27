@@ -16,33 +16,44 @@
 
 <% include ./partials/_header %>
 
-  <h4>Category</h4>
- <select>
-  <option value="all">all</option>
-  <option value="design">design</option>
-  <option value="food">food</option>
-  <option value="coding">coding</option>
-</select>
 
-    <textarea class="empty" name="text" placeholder="New Category"></textarea>
+
+<form method="GET" action="/genesis">
+  <h4>Category</h4>
+ <select id = "drop" name="category">
+<% newTopic.forEach(function(item, index){ %>
+     <option class="dropdown" value="<%= item %>"><%= item %></option>
+<% }) %>
+ </select>
+ </form>
+
+
+
+
+
+<form method="POST" action="/category">
+    <textarea name="addNewTopic" placeholder="New Topic"></textarea>
     <input type="submit" value="Add">
+</form>
+
 
 
 <form action="/genesis" method="POST">
    <input type="submit" value="Create Resource">
 </form>
-<object class='resourcemedia' type='media'>
 
-      </object>
+
     <main class="container">
 
       <br>
       <section>
-
-
-              <img src="/public/images/vicious_dog_0.png" >
-
+    <h1>My Genesis Board</h1>
+    <h3>concept formation plateform</h3>
+      <div id="thumbnails">
+      </div>
+      <footer></footer>
         </section>
     </main>
   </body>
+  <script type="text/javascript" src="/scripts/categorize.js"></script>
 </html>

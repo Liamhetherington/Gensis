@@ -19,7 +19,7 @@ $(document).ready(function() {
 		let $thumbnails = $("#thumbnails");
 		resource.forEach(function(images) {
 			let $imageRender = createMainDisplay(images);
-			$thumbnails.append($imageRender);
+			$thumbnails.prepend($imageRender);
 		});
 	}
 
@@ -34,5 +34,3 @@ $(document).ready(function() {
 		});
 	}
 });
-
-// 1. before setting handler, get resource(id), use template string to put it into the url, info page pass the resource data in with the template vars, using req.params.resource id
