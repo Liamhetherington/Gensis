@@ -19,6 +19,7 @@
   </head>
 
   <body>
+    <% include ./partials/_header %>
 
     <h1 id="resource-title"> <%= resource.title %></h1>
     <div>
@@ -54,7 +55,7 @@
     </div>
 
     <div class="comment">
-  
+
      <input type="text" name="comment" />
 
      <button class="commentButton" type="submit">Add a Comment</button>

@@ -146,6 +146,8 @@ app.post("/new", (req, res) => {
 		});
 });
 
+
+
 app.get("/genesis", (req, res) => {
 	if (req.session.id === undefined) {
 		return res.render("index", { username: "" });
@@ -203,13 +205,7 @@ app.post("/category", (req, res) => {
 });
 
 //Individual Resource Page
-// app.get("/info/", (req, res) => {
-// 	if (req.session.id === undefined) {
-// 		res.render("info", { username: "" });
-// 	}
-// 	let templateVars = { username: req.session.id };
-// 	res.render("info", templateVars);
-// });
+
 
 function getAllMyResources() {
 	return knex.select("*").from("resource");
@@ -247,10 +243,27 @@ async function getResourceDetails(resourceId) {
 
 app.get("/resource/:id", (req, res) => {
 	const id = req.params.id;
+	if (req.session.id === undefined) {
+		return res.render("index", { username: "" });
+	}
 	getResourceDetails(id).then(details => {
-		res.render("info", details);
+		knex.select("username")
+					.from("users")
+					.where("id", req.session.id)
+					.then(function(result) {
+						let templateVars = {
+							username: result[0].username,
+							...details,
+						};
+						console.log(templateVars)
+						res.render("info", templateVars);
+					});
+
 	});
+
 });
+
+
 
 app.get("/resource", (req, res) => {
 	users_id: req.session.id;
@@ -265,10 +278,10 @@ app.get("/resource/category/:categoryName", (req, res) => {
 		.from("category")
 		.where("topic", req.params.categoryName)
 		.then(function(result) {
-			console.log("get", result);
+			// console.log("get", result);
 			//got the category ID
-			console.log(result[0]);
-			console.log(result[0].id);
+			// console.log(result[0]);
+			// console.log(result[0].id);
 			knex("resource")
 				.where("category_id", result[0].id)
 				.then(resource => {
