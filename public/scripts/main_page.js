@@ -5,13 +5,28 @@ $(document).ready(function() {
 		window.location.replace("/resource/id");
 	});
 
+	const $grid = $(".grid").masonry({
+		itemSelector: ".grid-item",
+		columnWidth: 200,
+		gutter: 15
+	});
+
 	function createMainDisplay(resource) {
 		const $link = $("<a>");
 		$link.attr("href", `/resource/${resource.id}`);
-		let $thumbnail = $("<img>");
+		let $thumbnail = $("<div>");
 		$thumbnail.attr("src", resource.thumbnail).attr("id", "thumbnailClick");
 		$thumbnail.addClass("thumbnailImage");
+		$thumbnail
+			.addClass("thumbnail grid-item")
+			.append(`<h2>${resource.title}</h2>`);
+		const imageURL = resource.thumbnail;
+		$thumbnail.css(
+			"background",
+			"url(" + imageURL + ")" + "center / cover no-repeat"
+		);
 		$link.append($thumbnail);
+		$grid.masonry("prepended", $link);
 		return $link;
 	}
 
@@ -34,3 +49,4 @@ $(document).ready(function() {
 		});
 	}
 });
+

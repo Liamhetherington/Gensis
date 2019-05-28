@@ -31,10 +31,6 @@ app.use(
 	})
 );
 
-exports.index = function(req, res) {
-	// send moment to your ejs
-	res.render("info", { moment: moment });
-};
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
 
@@ -256,7 +252,6 @@ app.get("/resource/:id", (req, res) => {
 					username: result[0].username,
 					...details
 				};
-				// console.log(templateVars)
 				res.render("info", templateVars);
 			});
 	});
@@ -275,10 +270,6 @@ app.get("/resource/category/:categoryName", (req, res) => {
 		.from("category")
 		.where("topic", req.params.categoryName)
 		.then(function(result) {
-			// console.log("get", result);
-			//got the category ID
-			// console.log(result[0]);
-			// console.log(result[0].id);
 			knex("resource")
 				.where("category_id", result[0].id)
 				.then(resource => {
@@ -311,9 +302,15 @@ app.post("/resource/:id/comments", (req, res) => {
 });
 
 app.post("/rating", (req, res) => {
-	console.log("I am rating");
-	// knex("likes").insert({
-	// resource_id
+	knex("ratings")
+		.insert({
+			rating: req.body.rating,
+			resource_id: req.params.id,
+			users_id: req.session.id
+		})
+		.then(function(result) {
+			return res.redirect(`/resource/${req.params.id}`);
+		});
 });
 
 app.post("/logout", (req, res) => {

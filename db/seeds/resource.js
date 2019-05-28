@@ -11,9 +11,7 @@ exports.seed = function(knex, Promise) {
 						"http://www.blabbermouth.net/news/former-ghost-members-shoot-down-tobias-forges-solo-project-claim/",
 					description: "SOLO project",
 					thumbnail:
-						"http://assets.blabbermouth.net/media/ghostband2015promo_638.jpg",
-					// users_id: "1",
-					// category_id: "5"
+						"http://assets.blabbermouth.net/media/ghostband2015promo_638.jpg"
 				}),
 				knex("resource").insert({
 					id: 2,
@@ -22,9 +20,7 @@ exports.seed = function(knex, Promise) {
 					url: "https://www.youtube.com/watch?v=a_xJoSE3UqE",
 					description: "Sink in by GHOST",
 					thumbnail:
-						"https://i.ytimg.com/vi/a_xJoSE3UqE/maxresdefault.jpg",
-					// users_id: "1",
-					// category_id: "5"
+						"https://i.ytimg.com/vi/a_xJoSE3UqE/maxresdefault.jpg"
 				}),
 				knex("resource").insert({
 					id: 3,
@@ -35,9 +31,7 @@ exports.seed = function(knex, Promise) {
 					description:
 						"Tobias Forge Admits Ghost Hasn't Made 'Any Money Whatsoever' From Hundreds of Concerts: The Only Thing That Sustained This Band Are T-Shirt Sales",
 					thumbnail:
-						"https://www.ultimate-guitar.com/static/article/news/8/83178_0_wide_ver1544607795.jpg@642",
-					// users_id: "1",
-					// category_id: "5"
+						"https://www.ultimate-guitar.com/static/article/news/8/83178_0_wide_ver1544607795.jpg@642"
 				}),
 				knex("resource").insert({
 					id: 4,
@@ -48,9 +42,7 @@ exports.seed = function(knex, Promise) {
 					description:
 						"Swedish quasi-metal band Ghost, which covers the faces of its musicians with masks that have no mouths and two horns, has the most intelligent act in rock.",
 					thumbnail:
-						"https://s.hdnux.com/photos/73/05/54/15489854/3/480x480.jpg",
-					// users_id: "1",
-					// category_id: "5"
+						"https://s.hdnux.com/photos/73/05/54/15489854/3/480x480.jpg"
 				}),
 				knex("resource").insert({
 					id: 5,
@@ -61,9 +53,7 @@ exports.seed = function(knex, Promise) {
 						"https://ultimateclassicrock.com/how-lemmy-david-bowie-and-prince-inspired-new-ghost-lp/",
 					description: "Amazing rock influences, cross genre",
 					thumbnail:
-						"https://townsquare.media/site/295/files/2018/04/LemmyBowiePrinceGhost.jpg",
-					// users_id: "1",
-					// category_id: "5"
+						"https://townsquare.media/site/295/files/2018/04/LemmyBowiePrinceGhost.jpg"
 				}),
 				knex("resource").insert({
 					id: 6,
@@ -72,9 +62,7 @@ exports.seed = function(knex, Promise) {
 					url: "https://ejs.co/",
 					description: "Embedded JavaScript templating. Get Started!",
 					thumbnail:
-						"https://cdn-images-1.medium.com/max/1600/1*5xR5P6dzu4LpyMaR2QMphA.jpeg",
-					// users_id: "2",
-					// category_id: "4"
+						"https://cdn-images-1.medium.com/max/1600/1*5xR5P6dzu4LpyMaR2QMphA.jpeg"
 				}),
 				knex("resource").insert({
 					id: 7,
@@ -84,9 +72,7 @@ exports.seed = function(knex, Promise) {
 						"https://hackernoon.com/how-will-coding-be-relevant-in-the-future-74594c2b015f",
 					description: "What is coding anyway?",
 					thumbnail:
-						"https://cdn-images-1.medium.com/max/1600/1*6W5eurFhYPpwNbRbqNImgQ.jpeg",
-					// users_id: "2",
-					// category_id: "4"
+						"https://cdn-images-1.medium.com/max/1600/1*6W5eurFhYPpwNbRbqNImgQ.jpeg"
 				}),
 				knex("resource").insert({
 					id: 8,
@@ -98,9 +84,7 @@ exports.seed = function(knex, Promise) {
 					description:
 						"Say goodbye to mermaids and unicorns—these black foods are about to take over your Instagram feed.",
 					thumbnail:
-						"https://images.shape.mdpcdn.com/sites/shape.com/files/styles/slide/public/goth-charcoal-ice-cream-little-damage.jpg",
-					// users_id: "3",
-					// category_id: "3"
+						"https://images.shape.mdpcdn.com/sites/shape.com/files/styles/slide/public/goth-charcoal-ice-cream-little-damage.jpg"
 				}),
 				knex("resource").insert({
 					id: 9,
@@ -112,9 +96,7 @@ exports.seed = function(knex, Promise) {
 					description:
 						"Goth lemonade and black-as-your-soul ice cream cones might have seemed like the peak of the goth treat hype, but the truth is, the foodie world was just getting started.",
 					thumbnail:
-						"http://media.altpress.com/uploads/2018/06/goth_cookbook.jpg",
-					// users_id: "3",
-					// category_id: "3"
+						"http://media.altpress.com/uploads/2018/06/goth_cookbook.jpg"
 				}),
 				knex("resource").insert({
 					id: 10,
@@ -125,9 +107,7 @@ exports.seed = function(knex, Promise) {
 					description:
 						"There’s nothing like an indoor tree in a room. It immediately brings the outside in, making the room feel fresh and more alive.",
 					thumbnail:
-						"https://cdn-images-1.medium.com/max/2600/1*zycJdgMbLw3jODarBkR-PA.jpeg",
-					// users_id: "3",
-					// category_id: "2"
+						"https://cdn-images-1.medium.com/max/2600/1*zycJdgMbLw3jODarBkR-PA.jpeg"
 				}),
 				knex("resource").insert({
 					id: 11,
@@ -137,9 +117,7 @@ exports.seed = function(knex, Promise) {
 						"https://www.udemy.com/the-foundations-of-computer-design/",
 					description: "Basics to computer design",
 					thumbnail:
-						"https://i.udemycdn.com/course/750x422/1164182_d150.jpg",
-					// users_id: "2",
-					// category_id: "2"
+						"https://i.udemycdn.com/course/750x422/1164182_d150.jpg"
 				}),
 				knex("resource").insert({
 					id: 12,
@@ -149,9 +127,7 @@ exports.seed = function(knex, Promise) {
 						"https://www.lighthouselabs.ca/?gclid=Cj0KCQjwla7nBRDxARIsADll0kBNlR-L1hC5iA2JOmb7pW6zkGjXv-sS6GPfXpe7-2CMDdxh_BG-MeQaAi9jEALw_wcB",
 					description: "Learn to code really well",
 					thumbnail:
-						"https://pbs.twimg.com/profile_images/378800000328970347/40e96c650dad499b060a4f24ddc68c6e_400x400.png",
-					// users_id: "2",
-					// category_id: "2"
+						"https://pbs.twimg.com/profile_images/378800000328970347/40e96c650dad499b060a4f24ddc68c6e_400x400.png"
 				}),
 				knex("resource").insert({
 					id: 13,
@@ -161,9 +137,7 @@ exports.seed = function(knex, Promise) {
 						"https://caspiannews.com/news-detail/baku-hosts-street-food-festival-2018-6-12-57/",
 					description: "Baku third annual street festival",
 					thumbnail:
-						"https://caspiannews.com/media/caspian_news/all_original_photos/1528831479_7183783_1528831390_5761793SFF-Foto-2018-001web2.jpg",
-					// users_id: "3",
-					// category_id: "3"
+						"https://caspiannews.com/media/caspian_news/all_original_photos/1528831479_7183783_1528831390_5761793SFF-Foto-2018-001web2.jpg"
 				}),
 				knex("resource").insert({
 					id: 14,
@@ -175,9 +149,7 @@ exports.seed = function(knex, Promise) {
 					description:
 						"Thanks to global importation, most fruits and vegetables are available in supermarkets year round. So why should you seek out seasonal produce?",
 					thumbnail:
-						"https://foodrevolution.org/wp-content/uploads/2018/10/blog-featured-fall_foods-20181015.jpg",
-					// users_id: "3",
-					// category_id: "3"
+						"https://foodrevolution.org/wp-content/uploads/2018/10/blog-featured-fall_foods-20181015.jpg"
 				}),
 				knex("resource").insert({
 					id: 15,
@@ -187,9 +159,7 @@ exports.seed = function(knex, Promise) {
 					description:
 						"CodePen is a social development environment for front-end designers and developers.",
 					thumbnail:
-						"https://s3.amazonaws.com/media.eremedia.com/wp-content/uploads/2018/05/31112343/Codepen.png",
-					// users_id: "2",
-					// category_id: "4"
+						"https://s3.amazonaws.com/media.eremedia.com/wp-content/uploads/2018/05/31112343/Codepen.png"
 				}),
 				knex("resource").insert({
 					id: 16,
@@ -198,9 +168,7 @@ exports.seed = function(knex, Promise) {
 					url: "https://www.last.fm/tag/gothic+metal/artists",
 					description: "Top 100 metal artists from Scandinavia",
 					thumbnail:
-						"https://lastfm-img2.akamaized.net/i/u/270x205/ee40dda2851130a4b4a1700ddb674a5f.jpg",
-					// users_id: "1",
-					// category_id: "5"
+						"https://lastfm-img2.akamaized.net/i/u/270x205/ee40dda2851130a4b4a1700ddb674a5f.jpg"
 				}),
 				knex("resource").insert({
 					id: 17,
@@ -211,9 +179,7 @@ exports.seed = function(knex, Promise) {
 					description:
 						"ALL-GIRL SPOOKY JAPANESE GOTH BAND! SCARY VISUAL KEI MAKEUP, BLACK LIPSTICK, GOTHIC GIRLS ",
 					thumbnail:
-						"https://images.lacarmina.com/110830_goth_parties_tokyo_japan_clubs_bands_gothic_ebm_industrial_1.jpg",
-					// users_id: "1",
-					// category_id: "5"
+						"https://images.lacarmina.com/110830_goth_parties_tokyo_japan_clubs_bands_gothic_ebm_industrial_1.jpg"
 				}),
 				knex("resource").insert({
 					id: 18,
@@ -224,9 +190,7 @@ exports.seed = function(knex, Promise) {
 					description:
 						"Chicken Wings and other easy finger foods, for your summer BBQ",
 					thumbnail:
-						"https://www.bbcgoodfood.com/sites/default/files/guide/guide-image/2018/06/chicken-wings-main.jpg",
-					// users_id: "2",
-					// category_id: "3"
+						"https://www.bbcgoodfood.com/sites/default/files/guide/guide-image/2018/06/chicken-wings-main.jpg"
 				}),
 				knex("resource").insert({
 					id: 19,
@@ -236,9 +200,7 @@ exports.seed = function(knex, Promise) {
 					description:
 						"Our technology solutions and services help you achieve better outcomes, whether it’s improving student learning or making teams more productive.",
 					thumbnail:
-						"https://blog.off2class.com/wp-content/uploads/2016/02/interactive-white-board.png",
-					// users_id: "2",
-					// category_id: "2"
+						"https://blog.off2class.com/wp-content/uploads/2016/02/interactive-white-board.png"
 				}),
 				knex("resource").insert({
 					id: 20,
@@ -250,9 +212,7 @@ exports.seed = function(knex, Promise) {
 					description:
 						"Lines between products, services, and user environments are blurring. The ability to craft an integrated customer experience will open enormous opportunities to build new businesses.",
 					thumbnail:
-						"https://www.mckinsey.com/~/media/McKinsey/Business%20Functions/Operations/Our%20Insights/The%20expanding%20role%20of%20design%20in%20creating%20an%20end%20to%20end%20customer%20experience/Expanding-role-of-design-1536x1536-400_Standard.ashx",
-					// users_id: "3",
-					// category_id: "2"
+						"https://www.mckinsey.com/~/media/McKinsey/Business%20Functions/Operations/Our%20Insights/The%20expanding%20role%20of%20design%20in%20creating%20an%20end%20to%20end%20customer%20experience/Expanding-role-of-design-1536x1536-400_Standard.ashx"
 				})
 			]);
 		});

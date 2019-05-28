@@ -4,8 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+ <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+ <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 
 
@@ -32,29 +33,23 @@
 
 
 <form method="POST" action="/category">
-    <textarea name="addNewTopic" placeholder="New Topic"></textarea>
-    <input type="submit" value="Add">
+    <textarea name="addNewTopic" placeholder="New Topic" class="textBox"></textarea>
+    <input type="submit" value="Add" class="add-category">
 </form>
 
 
 
 <form action="/genesis" method="POST">
-   <input type="submit" value="Create Resource">
+   <input type="submit" value="Create Resource" class="create-resource-button">
 </form>
 
 
-    <main class="container">
+    <div class="container grid"> 
+      <div id="thumbnails"></div>
+      <h2 id="resource-title"></h2>
+    </div>
 
-      <br>
-      <section>
-    <h1>My Genesis Board</h1>
-    <h3>concept formation plateform</h3>
-
-      <div id="thumbnails">
-      </div>
-      <footer></footer>
-        </section>
-    </main>
   </body>
   <script type="text/javascript" src="/scripts/categorize.js"></script>
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 </html>

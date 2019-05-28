@@ -1,126 +1,336 @@
+.container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 5fr));
+  grid-auto-rows: 20px;
+  width: 100%;
+  margin: 10px;
+}
+
+div.thumbnail.grid-sizer,
+div.thumbnail.grid-item {
+  width: 300px;
+  height: 500px;
+  margin: 50px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  overflow: auto;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 0.7px;
+  -webkit-text-stroke-color: black;
+  font-family: "Quicksand", sans-serif;
+  text-align: center;
+}
+
+div.thumbnail.grid-item:hover {
+  box-shadow: 0 0 15px rgba(33, 33, 33, 1);
+}
+
+@media only screen and (max-width: 1199px),
+  only screen and (max-device-width: 1199px) {
+  .container {
+    width: 1000px;
+  }
+}
+
+@media only screen and (max-width: 999px),
+  only screen and (max-device-width: 999px) {
+  .container {
+    width: 800px;
+  }
+}
+
+@media only screen and (max-width: 799px),
+  only screen and (max-device-width: 799px) {
+  .container {
+    width: 600px;
+  }
+}
+
+@media only screen and (max-width: 599px),
+  only screen and (max-device-width: 599px) {
+  .container {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 399px),
+  only screen and (max-device-width: 399px) {
+  .container {
+    width: 200px;
+  }
+}
+
 body {
-  background-color: #eee;
+  margin: 20px;
+  background-color: #326871;
+}
 
-  h1 {
-    color: #244751;
-    margin-left: 50px;
-  }
+body h1 {
+  color: white;
+  margin-left: 50px;
+}
 
-  section {
-    float: right;
-    margin-right: 150px;
-    width: 300px;
-    height: 280px;
-  }
+body section {
+  float: right;
+  margin-right: 150px;
+  width: 300px;
+  height: 280px;
+}
+body div.comment {
+  margin-top: 20px;
+  margin-left: 50px;
+}
+body div.existing-comments {
+  padding: 5px;
+}
+body button.commentButton {
+  font-family: "Quicksand", sans-serif;
+  color: black;
+  border-radius: 10px;
+}
+body .thumbnailImage {
+  width: 100px;
+  height: 100px;
+}
+body textarea {
+  height: 180px;
+  width: 300px;
+  padding: 4px;
+}
+body .rating {
+  // float: left;
+  margin-right: 800px;
+}
+body .rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+body .rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+body .rating > span:hover:before,
+body .rating > span:hover ~ span:before {
+  content: "\2605";
+  position: absolute;
+}
+body [data-rating="5"] > span:nth-child(5):before,
+body [data-rating="5"] > span:nth-child(5) ~ span:before {
+  content: "\2605";
+  position: absolute;
+}
+body [data-rating="4"] > span:nth-child(4):before,
+body [data-rating="4"] > span:nth-child(4) ~ span:before {
+  content: "\2605";
+  position: absolute;
+}
+body [data-rating="3"] > span:nth-child(3):before,
+body [data-rating="3"] > span:nth-child(3) ~ span:before {
+  content: "\2605";
+  position: absolute;
+}
+body [data-rating="2"] > span:nth-child(2):before,
+body [data-rating="2"] > span:nth-child(2) ~ span:before {
+  content: "\2605";
+  position: absolute;
+}
+body [data-rating="1"] > span:nth-child(1):before,
+body [data-rating="1"] > span:nth-child(1) ~ span:before {
+  content: "\2605";
+  position: absolute;
+}
 
-  div.comment {
-    margin-top: 20px;
-    margin-left: 50px;
-  }
+body article {
+  float: right;
+  margin-right: 150px;
+  margin-top: 0px;
+}
 
-  div.existing-comments {
-    padding: 5px;
-  }
+body .topnav {
+  display: flex;
+  width: 100%;
+  height: 220px;
+  overflow: auto;
+  padding: 15px;
+  padding-top: 10px;
+  background-color: #326871;
+}
 
-  button.commentButton {
-    color: red;
-    border-radius: 10px;
-  }
+body .topnav p {
+  font-family: "Quicksand", sans-serif;
+  width: 100%;
+  color: #caebf2;
+  font-size: 3em;
+  margin: 5px;
+  margin-top: 30px;
+}
 
-  .thumbnailImage {
-    width: 100px;
-    height: 100px;
-  }
+body .topnav a {
+  color: black;
+  background-color: black;
+  width: 150px;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 5px;
+}
 
-  textarea {
-    height: 180px;
-    width: 300px;
-    padding: 4px;
-  }
+body .topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
 
-  .rating {
-    float: right;
-  }
-  // rating stars
-  .rating {
-    unicode-bidi: bidi-override;
-    direction: rtl;
-  }
-  .rating > span {
-    display: inline-block;
-    position: relative;
-    width: 1.1em;
-  }
-  .rating > span:hover:before,
-  .rating > span:hover ~ span:before {
-    content: "\2605";
-    position: absolute;
-  }
-  @each $star in (1, 2, 3, 4, 5) {
-    [data-rating="#{$star}"] > span:nth-child(#{6 - $star}):before,
-    [data-rating="#{$star}"] > span:nth-child(#{6 - $star}) ~ span:before {
-      content: "\2605";
-      position: absolute;
-    }
-  }
+body .topnav a.active {
+  font-family: "Quicksand", sans-serif;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+  width: 150px;
+  text-align: center;
+}
 
-  article {
-    float: right;
-    margin-right: 150px;
-    margin-top: 0px;
-  }
+body .topnav input[type="text"] {
+  border-radius: 10px;
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
 
-  /* Add a black background color to the top navigation bar */
-  .topnav {
-    overflow: hidden;
-    background-color: #e9e9e9;
-  }
+body .topnav a,
+body .topnav input[type="text"] {
+  font-family: "Quicksand", sans-serif;
+  float: none;
+  display: block;
+  text-align: center;
+  width: 150px;
+  padding: 14px;
+}
 
-  /* Style the links inside the navigation bar */
-  .topnav a {
-    float: left;
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-  }
+body .topnav input[type="text"] {
+  font-family: "Quicksand", sans-serif;
+  width: 300px;
+  margin-left: 40px;
+  border: 1px solid #ccc;
+}
 
-  /* Change the color of links on hover */
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
+button.btn.btn-primary {
+  font-family: "Quicksand", sans-serif;
+  border-radius: 10px;
+  background-color: black;
+  border: #2196f3;
+  color: white;
+  width: 150px;
+  text-align: center;
+  line-height: 45px;
+  margin-top: 5px;
+}
 
-  /* Style the "active" element to highlight the current page */
-  .topnav a.active {
-    background-color: #2196f3;
-    color: white;
-  }
+/*** LOGIN PAGE ***/
 
-  /* Style the search box inside the navigation bar */
-  .topnav input[type="text"] {
-    float: right;
-    padding: 6px;
-    border: none;
-    margin-top: 8px;
-    margin-right: 16px;
-    font-size: 17px;
-  }
+.login {
+  color: white;
+  font-size: 2em;
+  font-family: "Quicksand", sans-serif;
+}
 
-  /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
-  // @media screen and (max-width: 600px) {
-  .topnav a,
-  .topnav input[type="text"] {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 14px;
-  }
-  .topnav input[type="text"] {
-    border: 1px solid #ccc;
-  }
+.credentials {
+  color: white;
+  font-family: "Quicksand", sans-serif;
+}
+
+/*** My Genesis Board***/
+
+h4 {
+  color: white;
+  font-family: "Quicksand", sans-serif;
+  font-size: 2em;
+  margin-top: 30px;
+}
+
+textarea {
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.add-category {
+  margin-bottom: 5px;
+  display: inherit;
+  border-radius: 10px;
+}
+
+.create-resource-button {
+  margin-bottom: 5px;
+  display: inherit;
+  border-radius: 10px;
+}
+
+img#thumbnailClick.thumbnailImage {
+  max-width: 350px;
+  margin: 20px;
+}
+
+div#thumbnails {
+  width: 400px;
+  position: relative;
+}
+
+h1.my-gen {
+  display: inline-block;
+  width: 300px;
+  text-align: center;
+  font-family: "Quicksand", sans-serif;
+}
+
+.button-login {
+  height: 50px;
+}
+
+button.Like {
+  border-radius: 10px;
+}
+
+.searchbar {
+  height: 50px;
+  border-radius: 10px;
+  margin-left: 50px;
+}
+
+.textBox {
+  height: 50px;
+}
+
+div.info-div {
+  margin-left: 200px;
+  color: white;
+  font-family: "Quicksand", sans-serif;
+}
+
+img#resource-media {
+  border-radius: 10px;
+  height: 500px;
+  width: 500px;
+}
+
+h2.description-header {
+  font-size: 50px;
+}
+
+section.description-box {
+  margin-right: 300px;
+}
+
+article#description {
+  font-size: 30px;
+  margin-right: 0px;
 }

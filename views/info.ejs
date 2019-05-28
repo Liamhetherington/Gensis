@@ -6,27 +6,22 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-<!--     <link rel="stylesheet" href="/styles/info_page_styling.css" type="text/css" />
- -->
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/comments_container.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
-
-
-
   </head>
 
   <body>
     <% include ./partials/_header %>
 
-    <h1 id="resource-title"><a href="<%=resource.url%>"><%= resource.title %></a></h1>
-    <div>
+    <h1 id="resource-title"><a style="color:white; font-family: 'Quicksand', sans-serif; margin-left:150px; font-size: 100px" href="<%=resource.url%>"><%= resource.title %></a></h1>
+    <div class="info-div">
       <img id="resource-media" type="media" src="<%= resource.thumbnail %>"/>
       <section class="description-box">
 
-        <h2>Description</h2>
+        <h2 class="description-header">Description</h2>
           <article id="description"><%= resource.description %>
           </article>
       </section>
@@ -34,11 +29,11 @@
 
   <form method="POST" action="/rating">
     <div class="rating" data-rating="0">
-        <span data-value="5">☆</span>
-        <span data-value="4">☆</span>
-        <span data-value="3">☆</span>
-        <span data-value="2">☆</span>
         <span data-value="1">☆</span>
+        <span data-value="2">☆</span>
+        <span data-value="3">☆</span>
+        <span data-value="4">☆</span>
+        <span data-value="5">☆</span>
     </div>
     </form>
 
