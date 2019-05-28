@@ -4,11 +4,11 @@
 **Search bar functionality to come**
 
 ##Screenshots
-!["Main Page"](image/mainPage.png)
-!["Main Page after login"](image/loggedInMainPage.png)
-!["Creating a new resource"](image/CreateNewPage.png)
+!["Main Page"](images/mainPage.png)
+!["Main Page after login"](images/loggedInMainPage.png)
+!["Creating a new resource"](images/CreateNewPage.png)
 !["Adding a new resource"](images/AddingResource.png)
-!["Individual Resource Page"](image/InfoPage.png)
+!["Individual Resource Page"](images/InfoPage.png)
 
 ## Dependencies
 
